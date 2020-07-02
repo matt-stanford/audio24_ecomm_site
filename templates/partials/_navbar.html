@@ -1,0 +1,28 @@
+<nav>
+    <div class="navbar-logo">msCart</div>
+    <input type="checkbox" class="navbar-toggler">
+    <div class="navbar-toggler-hamburger"><div></div></div>
+
+    <div class="navbar-group">
+        <ul class="list-group">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#">Categories</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a class="nav-link" href="#">Category 1</a></li>
+                    <li class="dropdown-item"><a class="nav-link" href="#">Category 2</a></li>
+                    <li class="dropdown-item"><a class="nav-link" href="#">Category 3</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        </ul>
+
+        <form>
+            {% csrf_token %}
+            <label class="form-group">
+                <input type="text" name="search" class="form-control">
+                <button type="button" class="search-btn"><i class="fas fa-search"></i></button>
+            </label>
+        </form>
+    </div>
+</nav>

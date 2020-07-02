@@ -1,0 +1,15 @@
+:root {
+    --primary-color: #feda6a;
+    --silver: #d4d4dc;
+    --grey: #393f4d;
+    --slate: #1d1e22;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
