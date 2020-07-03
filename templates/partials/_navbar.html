@@ -1,28 +1,41 @@
 <nav>
-    <div class="navbar-logo">msCart</div>
-    <input type="checkbox" class="navbar-toggler">
-    <div class="navbar-toggler-hamburger"><div></div></div>
+    <div class="logo">msCart</div>
+    <input type="checkbox" id="btn" class="nav-check hide">
+    <label for="btn" class="icon">
+        <!-- <span class="fa fa-bars"></span> -->
+        <span class="nav-icon"></span>
+    </label>
+    <ul>
+        <li>
+            <label for="btn-1" class="show">Categories +</label>
+            <a href="#">Categories</a>
+            <input type="checkbox" id="btn-1" class="hide">
+            <ul>
+                <li><a href="#">Category 1</a></li>
+                <li><a href="#">Category 2</a></li>
+                <li><a href="#">Category 3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+        <li>
+            <form>
+                {% csrf_token %}
+                <label class="form-group">
+                    <input type="text" name="search" class="form-control">
+                    <button type="button" class="search-btn"><i class="fas fa-search"></i></button>
+                </label>
+            </form>
+        </li>
+    </ul>
 
-    <div class="navbar-group">
-        <ul class="list-group">
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">Categories</a>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-item"><a class="nav-link" href="#">Category 1</a></li>
-                    <li class="dropdown-item"><a class="nav-link" href="#">Category 2</a></li>
-                    <li class="dropdown-item"><a class="nav-link" href="#">Category 3</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        </ul>
-
-        <form>
-            {% csrf_token %}
-            <label class="form-group">
-                <input type="text" name="search" class="form-control">
-                <button type="button" class="search-btn"><i class="fas fa-search"></i></button>
-            </label>
-        </form>
-    </div>
+        <!-- <div class="list-group">
+            <form>
+                {% csrf_token %}
+                <label class="form-group">
+                    <input type="text" name="search" class="form-control">
+                    <button type="button" class="search-btn"><i class="fas fa-search"></i></button>
+                </label>
+            </form>
+        </div> -->
 </nav>
