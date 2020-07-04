@@ -63,7 +63,7 @@ nav ul ul li {
     width: 150px;
     float: none;
     display: list-item;
-    border-bottom: 1px solid var(--mid);
+    border-bottom: 1px solid rgba(0,0,0,.5);
 }
 
 nav ul ul li a {

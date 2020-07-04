@@ -1,8 +1,7 @@
 <nav>
-    <div class="logo">msCart</div>
+    <div class="logo"><a href="{% url 'index' %}">audio24</a></div>
     <input type="checkbox" id="btn" class="nav-check hide">
     <label for="btn" class="icon">
-        <!-- <span class="fa fa-bars"></span> -->
         <span class="nav-icon"></span>
     </label>
     <ul>
@@ -28,14 +27,4 @@
             </form>
         </li>
     </ul>
-
-        <!-- <div class="list-group">
-            <form>
-                {% csrf_token %}
-                <label class="form-group">
-                    <input type="text" name="search" class="form-control">
-                    <button type="button" class="search-btn"><i class="fas fa-search"></i></button>
-                </label>
-            </form>
-        </div> -->
 </nav>
