@@ -1,5 +1,8 @@
+{% load static %}
 <nav>
-    <div class="logo"><a href="{% url 'index' %}">audio24</a></div>
+    <div class="logo-wrapper">
+        <a href="{% url 'index' %}"><img src="{% static 'img/logo-banner.png' %}" alt="" class="logo"></a>
+    </div>
     <input type="checkbox" id="btn" class="nav-check hide">
     <label for="btn" class="icon">
         <span class="nav-icon"></span>

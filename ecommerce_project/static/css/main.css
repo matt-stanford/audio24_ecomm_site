@@ -1,7 +1,8 @@
 :root {
     --primary-color: #3aafa9;
+    --secondary-color: #ff5252;
     --dark: #17252a;
-    --mid: #2b7a78;
+    --mid: #545E56;
     --light: #def2f1;
     --off-white: #feffff;
 }
@@ -10,7 +11,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: var(--dark);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -21,6 +22,14 @@ body {
 .container {
     max-width: 100%;
     margin: 0 auto;
+}
+
+.py-5 {
+    padding: 3rem 0;
+}
+
+.mt-5 {
+    margin-top: 3rem;
 }
 
 .card-wrapper {
@@ -66,6 +75,141 @@ body {
     color: var(--primary-color);
 }
 
+.product-wrapper {
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+    margin: 1rem auto;
+}
+
+.product-wrapper p > a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.product-wrapper p > a:hover {
+    color: var(--secondary-color);
+}
+
+.product-title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    letter-spacing: 0.02px;
+}
+
+.product-sku {
+    margin-bottom: 4px;
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.variant-sku {
+    left: 120px;
+    position: absolute;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.product-quantity {
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.monthly-price {
+    margin-bottom: 11px;
+}
+
+.affirm-logo {
+    position: relative;
+    font-weight: 600;
+}
+
+.affirm-logo::after {
+    content: '';
+    position: absolute;
+    left: 26px;
+    top: -5px;
+    width: 30px;
+    height: 15px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 2px solid var(--primary-color);
+    border-bottom: 0;
+    transform: rotate(30deg);
+}
+
+.modal-trigger {
+    margin-left: 5px;
+}
+
+.product-description {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.quantity-wrapper {
+    display: table;
+}
+
+.product-action {
+    display: flex;
+    padding: 10px 0 20px;
+}
+
+.product-quantity-box {
+    margin-right: 10px;
+}
+
+.btn {
+    border-radius: 0;
+    border: none;
+}
+
+.btn-quantity, .product-form-quantity {
+    padding: 10px 6px;
+    width: 42px;
+    height: 42px;
+}
+
+.btn-quantity {
+    background: var(--light);
+}
+
+.btn-submit {
+    background: var(--dark);
+    color: #fff;
+    height: 42px;
+    padding: 0 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.fa-shopping-cart {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.product-form-quantity {
+    display: table-cell;
+    line-height: normal;
+    text-align: center;
+    border: 2px solid var(--light);
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -82,7 +226,7 @@ body {
         max-width: 50%;
     }
 
-    .card-wrapper {
+    .product-wrapper {
         flex: 0 0 50%;
         max-width: 50%;
     }

@@ -8,13 +8,17 @@ nav::after {
     display: table;
 }
 
-nav .logo {
+nav .logo-wrapper {
     float: left;
     color: #fff;
     font-size: 27px;
     font-weight: 600;
-    line-height: 70px;
+    height: 70px;
     padding-left: 60px;
+}
+
+nav .logo {
+    height: 70px;
 }
 
 nav ul {
@@ -97,6 +101,10 @@ nav ul ul li a {
     cursor: pointer;
 }
 
+.search-btn i {
+    color: #fff;
+}
+
 .search-btn:hover i {
     color: var(--primary-color);
 }
@@ -105,11 +113,6 @@ nav ul ul li a {
     nav ul {
         margin-right: 0px;
         float: left;
-    }
-
-    nav .logo {
-        padding-left: 30px;
-        width: 100%;
     }
 
     nav ul li, nav ul ul li {
