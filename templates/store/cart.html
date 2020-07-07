@@ -5,6 +5,17 @@
 {% block title %}Cart{% endblock %}
 
 {% block content %}
+
+{% if not cart_items %}
+<section>
+    <div class="container">
+        <div class="row">
+            <h1 class="section-header">Your shopping cart is empty</h1>
+            <p>Please click <a href="{% url 'index' %}">here</a> to continue shopping.</p>
+        </div>
+    </div>
+</section>
+{% else %}
 <section>
     <div class="container">
         <div class="row">
@@ -19,24 +30,38 @@
                     <thead>
                         <tr>
                             <th colspan="2">Product</th>
-                            <th>Price</th>
+                            <th>Unit Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
                         </tr>
                     </thead>
-                    {% for i in '123' %}
+                    {% for cart_item in cart_items %}
                     <tr>
-                        <td><a href=""><img src="{% static 'img/product-1.jpg' %}" alt=""></a></td>
-                        <td><a href="">Sennheiser Momentum 3 Wireless Closed-Back Headphones</a></td>
-                        <td>$299.00</td>
+                        <td class="cart-image">
+                            <div class="table-responsive-header text-left">Product</div>
+                            <a href="{{ cart_item.product.get_url }}"><img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}"></a>
+                        </td>
+                        <td class="text-left"><a href="">{{ cart_item.product.name }}</a></td>
                         <td>
+                            <div class="table-responsive-header">Unit Price</div>
+                            <div class="table-responsive-content">${{ cart_item.product.price }}</div>
+                        </td>
+                        <td>
+                            <div class="table-responsive-header">Quantity</div>
                             <div class="quantity-wrapper">
                                 <button class="btn btn-quantity">-</button>
-                                <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="1">
-                                <button class="btn btn-quantity">+</button>
+                                <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="{{ cart_item.quantity }}">
+                                {% if cart_item.quantity < cart_item.product.stock %}
+                                <a href="{% url 'add_cart' cart_item.product.id %}"><button class="btn btn-quantity">+</button></a>
+                                {% else %}
+                                <button class="btn btn-quantity disabled">+</button>
+                                {% endif %}
                             </div>
                         </td>
-                        <td>$498.00</td>
+                        <td>
+                            <div class="table-responsive-header">Total Price</div>
+                            <div class="table-responsive-content">${{ cart_item.sub_total }}</div>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -55,12 +80,12 @@
                             <td>Please review your cart items before proceeding with your payment.</td>
                         </tr>
                         <tr>
-                            <td>Your total is: <strong>$400</strong></td>
+                            <td>Your total is: <strong>${{ total }}</strong></td>
                         </tr>
                     </tbody>
                 </table>
                 <div>
-                    <a href="#">
+                    <a href="{% url 'index' %}">
                         <button class="btn btn-submit">Continue Shopping</button>
                     </a>
                 </div>
@@ -68,6 +93,7 @@
         </div>
     </div>
 </section>
+{% endif %}
     
     
 {% endblock %}

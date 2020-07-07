@@ -42,8 +42,12 @@ nav ul li a {
     padding: 8px 20px;
 }
 
-nav ul li a:hover {
-    color: var(--primary-color);
+nav ul li a:link, nav ul li a:visited {
+    color: #fff !important;
+}
+
+nav ul li a:hover, nav ul li a:active {
+    color: var(--primary-color) !important;
 }
 
 nav ul ul {
@@ -53,6 +57,7 @@ nav ul ul {
     visibility: hidden;
     transition: top .2s ease;
     border-top: 3px solid var(--primary-color);
+    z-index: 1;
 }
 
 nav ul li:hover > ul {

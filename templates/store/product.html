@@ -29,7 +29,7 @@
                         <a href="#" class="modal-trigger">Prequalify now</a>
                     </p>
                     
-                    <form action="">
+                    <!-- <form action=""> -->
                         <div class="pricebeater">
                             <p>Found a better price? <a href="#">We can match it.</a></p>
                         </div>
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="product-item-submit">
-                                <button type="submit" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button>
+                                <a href="{% url 'add_cart' product.id %}"><button type="button" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button></a>
                             </div>
                         </div>
                         <div class="product-help-text">
@@ -56,16 +56,14 @@
                                 <li><strong>Free expedited shipping on orders over $100</strong></li>
                             </ul>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
 
         <div class="row mt-5">
-            <div class="product-wrapper">
-                <h1 class="product-description">Product Description</h1>
-                <p class="product-detail">{{ product.description }}</p>
-            </div>
+            <h1 class="product-description">Product Description</h1>
+            <p class="product-detail">{{ product.description }}</p>
         </div>
     </div>
 {% endblock %}
