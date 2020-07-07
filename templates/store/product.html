@@ -2,23 +2,29 @@
 
 {% load static %}
 
-{% block title %}Product{% endblock %}
+{% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
     <div class="container py-3">
         <div class="row mt-5">
             <div class="product-wrapper">
-                <img src="{% static 'img/product-2.jpg' %}" alt="">
+                <img src="{{ product.image.url }}" alt="">
             </div>
             <div class="product-wrapper">
                 <div>
-                    <h1 class="product-title">Focal Utopia Open Back Headphones (2020 PACKAGING)</h1>
+                    <h1 class="product-title">{{ product.name }}</h1>
                     <p class="product-sku">Product SKU:
                         <span class="variant-sku">UTOPIA</span>
                     </p>
-                    <div class="product-quantity">Only 1 left in stock</div>
-                    <div class="product-price">$4,400.00</div>
-                    <p class="monthly-price">Starting at $212/mo with 
+                    <div class="product-quantity">
+                        <p>
+                            {% if product.stock <= 0 %}Out of stock
+                            {% elif product.stock <= 10 %}Only {{ product.stock }} left in stock
+                            {% else %}Buy now!{% endif %}
+                        </p>
+                    </div>
+                    <div class="product-price">${{ product.price }}</div>
+                    <p class="monthly-price">Starting at ${{ product.monthly }}/mo with 
                         <span class="affirm-logo">affirm</span>&nbsp;&nbsp;. 
                         <a href="#" class="modal-trigger">Prequalify now</a>
                     </p>
@@ -54,9 +60,12 @@
                 </div>
             </div>
         </div>
+
         <div class="row mt-5">
-            <h1 class="product-description">Product Description</h1>
-            <p class="product-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident commodi magnam tempore reiciendis. Expedita nostrum magnam corrupti, eos quos, necessitatibus beatae quae qui quibusdam tempore ab commodi laborum voluptate placeat?</p>
+            <div class="product-wrapper">
+                <h1 class="product-description">Product Description</h1>
+                <p class="product-detail">{{ product.description }}</p>
+            </div>
         </div>
     </div>
 {% endblock %}

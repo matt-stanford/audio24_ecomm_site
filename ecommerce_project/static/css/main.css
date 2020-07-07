@@ -111,6 +111,11 @@ footer {
     list-style-type: square;
 }
 
+.product-wrapper img {
+    width: 100%;
+    padding: 30px;
+}
+
 .product-title, .product-description {
     text-transform: uppercase;
     font-weight: 700;
@@ -215,9 +220,11 @@ footer {
     color: #fff;
     height: 42px;
     padding: 0 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
 }
 
 .fa-shopping-cart {
@@ -233,9 +240,54 @@ footer {
     outline: none;
 }
 
+.cart-wrapper {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 15px;
+}
+
+th {
+    font-weight: 700;
+    padding: 10px 0 8px;
+    background: var(--light);
+    text-transform: uppercase;
+    padding-left: 15px;
+    padding-right: 15px;
+    letter-spacing: 1px;
+}
+
+table img {
+    width: 100px;
+    height: auto;
+}
+
+tr {
+    border-bottom: 1px solid var(--light);
+}
+
+td {
+    padding: 10px 0;
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
+    }
+
+    .cart-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
 
@@ -253,6 +305,11 @@ footer {
         flex: 0 0 50%;
         max-width: 50%;
     }
+
+    .cart-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 @media (min-width: 992px) {
@@ -263,6 +320,11 @@ footer {
     .card-wrapper {
         flex: 0 0 25%;
         max-width: 25%;
+    }
+
+    .cart-wrapper {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
 

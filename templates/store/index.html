@@ -19,16 +19,17 @@
 
         <div class="container">
             <div class="row">
-                {% for i in '12345678' %}
+                {% for product in products %}
                     <div class="card-wrapper">
                         <div class="card">
                             <div class="card-image">
-                                <img src="{% static 'img/product-1.jpg' %}" alt="">
+                                <a href="{{ product.get_url }}"><img src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+                                
                             </div>
                             <div class="card-footer">
-                                <p>Sennheiser HD 820 Over Ear Closed Back Headphones</p>
+                                <p>{{ product.name }}</p>
                                 <div class="card-price">
-                                    <p>$2,399.95</p>
+                                    <p>${{ product.price }}</p>
                                 </div>
                             </div>
                         </div>

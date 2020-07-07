@@ -13,9 +13,10 @@
             <a href="#">Categories</a>
             <input type="checkbox" id="btn-1" class="hide">
             <ul>
-                <li><a href="#">Category 1</a></li>
-                <li><a href="#">Category 2</a></li>
-                <li><a href="#">Category 3</a></li>
+                <li><a href="{% url 'index' %}">All Products</a></li>
+                {% for category in links %}
+                <li><a href="{{ category.get_url }}">{{ category.name }}</a></li>
+                {% endfor %}
             </ul>
         </li>
         <li><a href="#">Contact</a></li>

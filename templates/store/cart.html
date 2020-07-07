@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <h1 class="section-header">Your shopping cart</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="cart-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    {% for i in '123' %}
+                    <tr>
+                        <td><a href=""><img src="{% static 'img/product-1.jpg' %}" alt=""></a></td>
+                        <td><a href="">Sennheiser Momentum 3 Wireless Closed-Back Headphones</a></td>
+                        <td>$299.00</td>
+                        <td>
+                            <div class="quantity-wrapper">
+                                <button class="btn btn-quantity">-</button>
+                                <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="1">
+                                <button class="btn btn-quantity">+</button>
+                            </div>
+                        </td>
+                        <td>$498.00</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="cart-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="4">
+                                Check out
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Please review your cart items before proceeding with your payment.</td>
+                        </tr>
+                        <tr>
+                            <td>Your total is: <strong>$400</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="#">
+                        <button class="btn btn-submit">Continue Shopping</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+{% endblock %}
