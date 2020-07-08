@@ -196,10 +196,16 @@ a:hover, a:active {
 .product-description {
     font-weight: 700;
     text-transform: uppercase;
+    padding: 0 20px;
+}
+
+.product-detail {
+    padding: 20px;
+    margin-bottom: 50px;
 }
 
 .quantity-wrapper {
-    display: table;
+    display: flex;
 }
 
 .product-action {
@@ -219,13 +225,17 @@ a:hover, a:active {
 }
 
 .btn-quantity, .product-form-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 6px;
     width: 42px;
     height: 42px;
 }
 
 .btn-quantity {
-    background: var(--light);
+    background: var(--primary-color);
+    color: #fff;
 }
 
 .btn-submit {
@@ -246,10 +256,10 @@ a:hover, a:active {
 }
 
 .product-form-quantity {
-    display: table-cell;
-    line-height: normal;
+    /* display: table-cell;
+    line-height: normal; */
     text-align: center;
-    border: 2px solid var(--light);
+    border: 2px solid var(--primary-color);
     outline: none;
 }
 
@@ -360,7 +370,7 @@ tr:last-child {
         vertical-align: middle;
     }
 
-    tr {
+    thead > tr, tr {
         display: table-row;
         border-bottom: 1px solid var(--light);
     }

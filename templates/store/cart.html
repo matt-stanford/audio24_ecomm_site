@@ -41,7 +41,7 @@
                             <div class="table-responsive-header text-left">Product</div>
                             <a href="{{ cart_item.product.get_url }}"><img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}"></a>
                         </td>
-                        <td class="text-left"><a href="">{{ cart_item.product.name }}</a></td>
+                        <td class="text-left"><a href="{{ cart_item.product.get_url }}">{{ cart_item.product.name }}</a></td>
                         <td>
                             <div class="table-responsive-header">Unit Price</div>
                             <div class="table-responsive-content">${{ cart_item.product.price }}</div>
@@ -49,12 +49,12 @@
                         <td>
                             <div class="table-responsive-header">Quantity</div>
                             <div class="quantity-wrapper">
-                                <button class="btn btn-quantity">-</button>
+                                <span class="btn btn-quantity" id="subtract"><i class="fas fa-minus"></i></span>
                                 <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="{{ cart_item.quantity }}">
                                 {% if cart_item.quantity < cart_item.product.stock %}
-                                <a href="{% url 'add_cart' cart_item.product.id %}"><button class="btn btn-quantity">+</button></a>
+                                <span class="btn btn-quantity" id="add"><i class="fas fa-plus"></i></span>
                                 {% else %}
-                                <button class="btn btn-quantity disabled">+</button>
+                                <span class="btn btn-quantity disabled" id="add"><i class="fas fa-plus"></i></span>
                                 {% endif %}
                             </div>
                         </td>

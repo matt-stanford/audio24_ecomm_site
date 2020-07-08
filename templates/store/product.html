@@ -29,20 +29,22 @@
                         <a href="#" class="modal-trigger">Prequalify now</a>
                     </p>
                     
-                    <!-- <form action=""> -->
+                    <form action="{% url 'add_cart' product.id %}" method="post">
+                        {% csrf_token %}
                         <div class="pricebeater">
                             <p>Found a better price? <a href="#">We can match it.</a></p>
                         </div>
                         <div class="product-action">
                             <div class="product-quantity-box">
                                 <div class="quantity-wrapper">
-                                    <button class="btn btn-quantity">-</button>
-                                    <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="1">
-                                    <button class="btn btn-quantity">+</button>
+                                    <span class="btn btn-quantity" id="subtract"><i class="fas fa-minus"></i></span>
+                                    <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="1" min="0">
+                                    <span class="btn btn-quantity" id="add"><i class="fas fa-plus"></i></span>
                                 </div>
                             </div>
                             <div class="product-item-submit">
-                                <a href="{% url 'add_cart' product.id %}"><button type="button" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button></a>
+                                <!-- <a href="{% url 'add_cart' product.id %}"><button type="button" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button></a> -->
+                                <button type="submit" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button>
                             </div>
                         </div>
                         <div class="product-help-text">
@@ -56,7 +58,7 @@
                                 <li><strong>Free expedited shipping on orders over $100</strong></li>
                             </ul>
                         </div>
-                    <!-- </form> -->
+                    </form>
                 </div>
             </div>
         </div>
