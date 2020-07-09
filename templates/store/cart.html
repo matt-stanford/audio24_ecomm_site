@@ -30,8 +30,8 @@
                     <thead>
                         <tr>
                             <th colspan="2">Product</th>
-                            <th>Unit Price</th>
-                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th colspan="2">Quantity</th>
                             <th>Total</th>
                         </tr>
                     </thead>
@@ -48,14 +48,18 @@
                         </td>
                         <td>
                             <div class="table-responsive-header">Quantity</div>
+                            <input type="text" name="quantity" id="quantity{{ cart_item.product.id }}" class="product-form-quantity" value="{{ cart_item.quantity }}" min="0">
+                        </td>
+                        <td>
                             <div class="quantity-wrapper">
-                                <span class="btn btn-quantity" id="subtract"><i class="fas fa-minus"></i></span>
-                                <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="{{ cart_item.quantity }}">
+                                <span class="btn btn-quantity" id="subtract" data-product="{{ cart_item.product.id }}"><i class="fas fa-minus"></i></span>
+                                <!-- <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="{{ cart_item.quantity }}"> -->
                                 {% if cart_item.quantity < cart_item.product.stock %}
-                                <span class="btn btn-quantity" id="add"><i class="fas fa-plus"></i></span>
+                                <span data-product="{{ cart_item.product.id }}" class="btn btn-quantity mx-5" id="add"><i class="fas fa-plus"></i></span>
                                 {% else %}
-                                <span class="btn btn-quantity disabled" id="add"><i class="fas fa-plus"></i></span>
+                                <span class="btn btn-quantity disabled mx-5" id="add"><i class="fas fa-plus"></i></span>
                                 {% endif %}
+                                <span class="btn btn-quantity" id="delete" data-product="{{ cart_item.product.id }}"><i class="fas fa-times"></i></span>
                             </div>
                         </td>
                         <td>

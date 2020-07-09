@@ -60,6 +60,10 @@ a:hover, a:active {
     margin-top: 3rem;
 }
 
+.mx-5 {
+    margin: 0 5px;
+}
+
 .card-wrapper {
     flex: 0 0 75%;
     max-width: 75%;
@@ -208,6 +212,13 @@ a:hover, a:active {
     display: flex;
 }
 
+.quantity-wrapper a:link,
+.quantity-wrapper a:visited,
+.quantity-wrapper a:active,
+.quantity-wrapper a:hover {
+    color: #fff;
+}
+
 .product-action {
     display: flex;
     padding: 10px 0 20px;
@@ -276,6 +287,7 @@ a:hover, a:active {
 table {
     display: block;
     width: 100%;
+    margin-bottom: 30px;
 }
 
 thead, td, tr, tbody {
@@ -362,7 +374,6 @@ tr:last-child {
         display: table;
         border-collapse: collapse;
         border-spacing: 0;
-        margin-bottom: 15px;
     }
 
     thead {
