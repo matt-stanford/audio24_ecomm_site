@@ -14,16 +14,16 @@ subtractBtns.forEach(btn => {
     btn.addEventListener('click', function() {
         var product = this.dataset.product;
         let quantity = document.getElementById('quantity'+product);
-        if (parseInt(quantity.value) > 0) {
+        if (parseInt(quantity.value) > 1) {
             quantity.value--;
         }
     });
 });
 
-deleteBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-        var product = this.dataset.product;
-        let quantity = document.getElementById('quantity'+product);
-        quantity.value = 0;
-    });
-});
+// deleteBtns.forEach(btn => {
+//     btn.addEventListener('click', function() {
+//         var product = this.dataset.product;
+//         let quantity = document.getElementById('quantity'+product);
+//         quantity.value = 0;
+//     });
+// });

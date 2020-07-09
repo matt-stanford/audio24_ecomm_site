@@ -109,8 +109,31 @@ nav ul ul li a {
     color: #fff;
 }
 
-.search-btn:hover i {
+.search-btn:hover i, .cart-li i:hover {
     color: var(--primary-color);
+}
+
+.fa-shopping-cart {
+    margin-right: 0 !important;
+}
+
+.cart-li {
+    position: relative;
+}
+
+.cart-count {
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 45px;
+    background: var(--secondary-color);
+    color: #fff;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media all and (max-width: 900px) {
@@ -218,9 +241,5 @@ nav ul ul li a {
 
     [id^=btn]:checked ~ ul {
         display: block;
-    }
-
-    form {
-        margin-bottom: 50px;
     }
 }

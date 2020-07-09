@@ -30,5 +30,8 @@
                 </label>
             </form>
         </li>
+        <li class="cart-li">
+            <a href="{% url 'cart_detail' %}"><i class="fas fa-shopping-cart"></i></a>{% if item_count > 0 %}<span class="cart-count">{{ item_count }}</span>{% endif %}
+        </li>
     </ul>
 </nav>

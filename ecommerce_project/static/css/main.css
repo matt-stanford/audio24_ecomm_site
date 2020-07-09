@@ -48,6 +48,12 @@ a:hover, a:active {
     color: var(--secondary-color);
 }
 
+.text-center {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 .text-left {
     text-align: left;
 }

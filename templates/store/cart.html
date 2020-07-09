@@ -9,7 +9,7 @@
 {% if not cart_items %}
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row text-center">
             <h1 class="section-header">Your shopping cart is empty</h1>
             <p>Please click <a href="{% url 'index' %}">here</a> to continue shopping.</p>
         </div>
@@ -53,13 +53,12 @@
                         <td>
                             <div class="quantity-wrapper">
                                 <span class="btn btn-quantity" id="subtract" data-product="{{ cart_item.product.id }}"><i class="fas fa-minus"></i></span>
-                                <!-- <input type="text" name="quantity" id="quantity" class="product-form-quantity" value="{{ cart_item.quantity }}"> -->
                                 {% if cart_item.quantity < cart_item.product.stock %}
                                 <span data-product="{{ cart_item.product.id }}" class="btn btn-quantity mx-5" id="add"><i class="fas fa-plus"></i></span>
                                 {% else %}
                                 <span class="btn btn-quantity disabled mx-5" id="add"><i class="fas fa-plus"></i></span>
                                 {% endif %}
-                                <span class="btn btn-quantity" id="delete" data-product="{{ cart_item.product.id }}"><i class="fas fa-times"></i></span>
+                                <a href="{% url 'cart_remove_product' cart_item.product.id %}" class="btn btn-quantity"><i class="fas fa-times"></i></a>
                             </div>
                         </td>
                         <td>
