@@ -267,6 +267,19 @@ a:hover, a:active {
     font-size: 1rem;
 }
 
+.btn-update-cart {
+    background: var(--secondary-color);
+    color: #fff;
+    height: 42px;
+    padding: 0 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    margin: 10px 0 0;
+}
+
 .fa-shopping-cart {
     color: #fff;
     margin-right: 10px;
@@ -404,6 +417,10 @@ tr:last-child {
     td {
         display: table-cell;
         text-align: center;
+    }
+
+    .btn-update-cart {
+        margin: 0 0 0 10px;
     }
 }
 

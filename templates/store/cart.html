@@ -54,7 +54,7 @@
                             <div class="quantity-wrapper">
                                 <span class="btn btn-quantity" id="subtract" data-product="{{ cart_item.product.id }}"><i class="fas fa-minus"></i></span>
                                 {% if cart_item.quantity < cart_item.product.stock %}
-                                <span data-product="{{ cart_item.product.id }}" class="btn btn-quantity mx-5" id="add"><i class="fas fa-plus"></i></span>
+                                <a href="{% url 'add_one_to_cart' cart_item.product.id %}"><span data-product="{{ cart_item.product.id }}" class="btn btn-quantity mx-5" id="add"><i class="fas fa-plus"></i></span></a>
                                 {% else %}
                                 <span class="btn btn-quantity disabled mx-5" id="add"><i class="fas fa-plus"></i></span>
                                 {% endif %}
@@ -69,6 +69,7 @@
                     {% endfor %}
                 </table>
             </div>
+
             <div class="cart-wrapper">
                 <table>
                     <thead>
@@ -88,9 +89,7 @@
                     </tbody>
                 </table>
                 <div>
-                    <a href="{% url 'index' %}">
-                        <button class="btn btn-submit">Continue Shopping</button>
-                    </a>
+                    <a href="{% url 'index' %}"><button class="btn btn-submit">Continue Shopping</button></a>
                 </div>
             </div>
         </div>
