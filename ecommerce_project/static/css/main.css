@@ -199,8 +199,120 @@ a:hover, a:active {
     transform: rotate(30deg);
 }
 
-.modal-trigger {
+.affirm-modal-trigger {
     margin-left: 5px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.affirm-modal-trigger:hover {
+    color: var(--secondary-color);
+}
+
+.affirm-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .8);
+    z-index: 2;
+}
+
+.affirm-modal h1 {
+    font-size: 26px;
+}
+
+.affirm-modal-content {
+    position: relative;
+    display: flex;
+    margin: 100px auto;
+    max-width: 640px;
+    background: var(--off-white);
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
+.affirm-modal-inner {
+    margin: 0 auto;
+    max-width: 416px;
+    min-height: 250px;
+    width: 100%;
+}
+
+.affirm-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.affirm-modal-close-btn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: var(--primary-color);
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.affirm-modal-close-btn:hover,
+.affirm-modal-close-btn:focus {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.affirm-modal-body {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.affirm-modal-body-title {
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.affirm-modal-card-wrapper {
+    width: 100%;
+}
+
+.affirm-modal-card {
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(6,8,9,.16);
+    list-style: none !important;
+    margin-bottom: 20px;
+}
+
+.affirm-modal-card-header,
+.affirm-modal-card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.affirm-modal-card-header {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.affirm-modal-card-info {
+    margin-right: 10px;
+}
+
+.affirm-modal-card-info-header {
+    font-weight: 700;
+}
+
+.subscript {
+    font-size: 14px;
 }
 
 .product-description {
@@ -264,7 +376,6 @@ a:hover, a:active {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
 }
 
 .btn-update-cart {
