@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
@@ -23,8 +25,8 @@
                             {% else %}Buy now!{% endif %}
                         </p>
                     </div>
-                    <div class="product-price">${{ product.price }}</div>
-                    <p class="monthly-price">Starting at ${{ product.monthly }}/mo with 
+                    <div class="product-price">${{ product.price | intcomma }}</div>
+                    <p class="monthly-price">Starting at ${{ twelve_monthly | intcomma }}/mo with 
                         <span class="affirm-logo">affirm</span>&nbsp;&nbsp;. 
                         <span class="affirm-modal-trigger">Prequalify now</span>
                     </p>
@@ -40,14 +42,14 @@
                                 </div>
                                 <div class="affirm-modal-body">
                                     <div>
-                                        <p class="affirm-modal-body-title">Sample payments for ${{ product.price }}</p>
+                                        <p class="affirm-modal-body-title">Sample payments for ${{ product.price | intcomma }}</p>
                                     </div>
                                     <div class="affirm-modal-card-wrapper">
-                                        <ul>
+                                        <ul class="affirm-modal-list">
                                             <li class="affirm-modal-card">
                                                 <div class="affirm-modal-card-header">
                                                     <div>
-                                                        <p>$300.00 <span class="subscript">per month</span></p>
+                                                        <p>${{ three_monthly | intcomma }} <span class="subscript">per month</span></p>
                                                     </div>
                                                     <div>
                                                         <p>3 <span class="subscript">months</span></p>
@@ -64,7 +66,7 @@
                                                     </div>
                                                     <div class="affirm-modal-card-info">
                                                         <p class="affirm-modal-card-info-header">Total</p>
-                                                        <p>${{ product.price }}</p>
+                                                        <p>${{ product.price | intcomma }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -72,7 +74,7 @@
                                             <li class="affirm-modal-card">
                                                 <div class="affirm-modal-card-header">
                                                     <div>
-                                                        <p>$300.00 <span class="subscript">per month</span></p>
+                                                        <p>${{ six_monthly | intcomma }} <span class="subscript">per month</span></p>
                                                     </div>
                                                     <div>
                                                         <p>6 <span class="subscript">months</span></p>
@@ -85,11 +87,11 @@
                                                     </div>
                                                     <div class="affirm-modal-card-info">
                                                         <p class="affirm-modal-card-info-header">Interest</p>
-                                                        <p>$0.00</p>
+                                                        <p>${{ six_interest | intcomma }}</p>
                                                     </div>
                                                     <div class="affirm-modal-card-info">
                                                         <p class="affirm-modal-card-info-header">Total</p>
-                                                        <p>${{ product.price }}</p>
+                                                        <p>${{ six_total | intcomma }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -97,7 +99,7 @@
                                             <li class="affirm-modal-card">
                                                 <div class="affirm-modal-card-header">
                                                     <div>
-                                                        <p>$300.00 <span class="subscript">per month</span></p>
+                                                        <p>${{ twelve_monthly | intcomma }} <span class="subscript">per month</span></p>
                                                     </div>
                                                     <div>
                                                         <p>12 <span class="subscript">months</span></p>
@@ -110,11 +112,11 @@
                                                     </div>
                                                     <div class="affirm-modal-card-info">
                                                         <p class="affirm-modal-card-info-header">Interest</p>
-                                                        <p>$0.00</p>
+                                                        <p>${{ twelve_interest | intcomma }}</p>
                                                     </div>
                                                     <div class="affirm-modal-card-info">
                                                         <p class="affirm-modal-card-info-header">Total</p>
-                                                        <p>${{ product.price }}</p>
+                                                        <p>${{ twelve_total | intcomma }}</p>
                                                     </div>
                                                 </div>
                                             </li>

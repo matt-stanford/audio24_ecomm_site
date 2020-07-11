@@ -89,6 +89,21 @@
                     </tbody>
                 </table>
                 <div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <script src="https://checkout.stripe.com/checkout.js"
+                        class="stripe-button"
+                        data-key="{{ data_key }}"
+                        data-amount="{{ stripe_total }}"
+                        data-name="audio24"
+                        data-description="{{ description }}"
+                        data-locale="auto"
+                        data-currency="usd"
+                        data-shipping-address="true"
+                        data-billing-address="true"
+                        data-zip-code="true">
+                        </script>
+                    </form>
                     <a href="{% url 'index' %}"><button class="btn btn-submit">Continue Shopping</button></a>
                 </div>
             </div>

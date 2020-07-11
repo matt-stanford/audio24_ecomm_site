@@ -31,3 +31,9 @@ affirmOpen.addEventListener('click', function() {
 affirmClose.addEventListener('click', function() {
     affirmModal.style.display = 'none'
 });
+
+window.addEventListener('click', function(e) {
+    if (e.target == affirmModal) {
+        affirmModal.style.display = 'none'
+    }
+});

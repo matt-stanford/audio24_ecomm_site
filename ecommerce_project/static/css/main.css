@@ -200,7 +200,6 @@ a:hover, a:active {
 }
 
 .affirm-modal-trigger {
-    margin-left: 5px;
     color: var(--primary-color);
     cursor: pointer;
 }
@@ -219,6 +218,8 @@ a:hover, a:active {
     overflow: hidden;
     background: rgba(0, 0, 0, .8);
     z-index: 2;
+    animation-name: modalopen;
+    animation-duration: 0.6s;
 }
 
 .affirm-modal h1 {
@@ -228,11 +229,17 @@ a:hover, a:active {
 .affirm-modal-content {
     position: relative;
     display: flex;
-    margin: 100px auto;
     max-width: 640px;
     background: var(--off-white);
     padding: 20px;
     padding-bottom: 50px;
+    animation-name: modalopen;
+    animation-duration: 0.8s;
+}
+
+@keyframes modalopen {
+    from { opacity: 0;}
+    to { opacity: 1;}
 }
 
 .affirm-modal-inner {
@@ -254,7 +261,6 @@ a:hover, a:active {
 .affirm-modal-close-btn {
     position: absolute;
     top: 0;
-    right: 15px;
     color: var(--primary-color);
     float: right;
     font-size: 2rem;
@@ -281,6 +287,10 @@ a:hover, a:active {
 
 .affirm-modal-card-wrapper {
     width: 100%;
+}
+
+.affirm-modal-list {
+    display: block;
 }
 
 .affirm-modal-card {
@@ -530,6 +540,10 @@ tr:last-child {
 
     .btn-update-cart {
         margin: 0 0 0 10px;
+    }
+
+    .affirm-modal-content {
+        margin: 100px auto;
     }
 }
 
