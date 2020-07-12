@@ -70,6 +70,10 @@ a:hover, a:active {
     margin: 0 5px;
 }
 
+.mb-10 {
+    margin-bottom: 10px;
+}
+
 .card-wrapper {
     flex: 0 0 75%;
     max-width: 75%;
@@ -477,6 +481,47 @@ tr:last-child {
     text-align: center;
 }
 
+.cart-buttons {
+    display: block;
+    margin-bottom: 50px;
+}
+
+.stripe-button-el {
+    background: var(--secondary-color) !important;
+    border-radius: 0 !important;
+    outline: none;
+    color: #fff;
+    height: 42px;
+    padding: 0 50px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 0 10px 0;
+}
+
+.stripe-button-el > span {
+    padding: 0 !important;
+    height: 0 !important;
+    line-height: 0 !important;
+    background: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    font-family: 'Poppins', sans-serif !important;
+    border-radius: 0 !important;
+    min-height: 0 !important;
+}
+
+.thankyou-image {
+    width: 100% !important;
+}
+
+.thankyou-wrapper p {
+    margin: 20px 0;
+}
+
+/* media queries */
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -544,6 +589,20 @@ tr:last-child {
 
     .affirm-modal-content {
         margin: 100px auto;
+    }
+
+    .cart-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stripe-button-el {
+        margin: 0 10px 0 0;
+    }
+
+    .thankyou-image {
+        width: 400px !important;
     }
 }
 

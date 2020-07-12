@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Thanks!{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5">
+            <h1 class="section-header">Thanks for placing your order</h1>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <p class="mb-10">Your order number is: <strong>{{ customer_order.id }}</strong></p>
+                <p>We have received your order and will begin processing right away. An email confirmation will be sent to you.</p>
+                <img src="{% static 'img/shopping-bag.png' %}" alt="" class="thankyou-image">
+            </div>
+        </div>
+    </div>
+{% endblock %}
