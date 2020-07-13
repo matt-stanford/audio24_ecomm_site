@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if not form.is_valid %}
+            <div class="signup-form-wrapper">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-submit mt-5">Sign Up</button>
+                </form>
+            </div>
+            <div class="signup-help-text">
+                <small class="text-muted">Already Have An Account? <a href="{% url 'signin' %}">Sign In</a></small>
+            </div>
+            {% else %}
+            <div class="mx-auto">
+                <h1 class="product-title">
+                    Your account has been successfully created
+                </h1>
+                <p>Dear {{ request.user.username }}</p>
+                <p>Your account has been created and it is ready to use.</p>
+                <p><a href="{% url 'index' %}">Continue shopping</a> and enjoy the variety of headphones at audio24</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

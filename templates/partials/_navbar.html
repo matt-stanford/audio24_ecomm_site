@@ -8,6 +8,13 @@
         <span class="nav-icon"></span>
     </label>
     <ul>
+        {% if request.user.is_authenticated and request.user.first_name %}
+            <li><span class="welcome-span">Welcome, {{ request.user.first_name }}</span></li>
+            <li><a href="{% url 'signout' %}">Sign out</a></li>
+        {% else %}
+            <li><a href="{% url 'signup' %}">Sign up</a></li>
+            <li><a href="{% url 'signin' %}">Login</a></li>
+        {% endif %}
         <li>
             <label for="btn-1" class="show">Categories +</label>
             <a href="#">Categories</a>
@@ -20,12 +27,11 @@
             </ul>
         </li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#">About</a></li>
         <li>
             <form>
                 {% csrf_token %}
                 <label class="form-group">
-                    <input type="text" name="search" class="form-control">
+                    <input type="text" name="search" class="search-bar">
                     <button type="button" class="search-btn"><i class="fas fa-search"></i></button>
                 </label>
             </form>

@@ -34,7 +34,8 @@ nav ul li {
     background: var(--dark);
 }
 
-nav ul li a {
+nav ul li a,
+.welcome-span {
     color: #fff;
     text-decoration: none;
     line-height: 70px;
@@ -82,7 +83,7 @@ nav ul ul li a {
     display: none;
 }
 
-.form-control {
+.search-bar {
     border: none;
     background: none;
     border-bottom: 2px solid #fff;
@@ -92,7 +93,8 @@ nav ul ul li a {
     color: #fff;
 }
 
-.form-control:focus {
+.search-bar:focus,
+.search-bar:hover {
     border-bottom: 2px solid var(--primary-color);
 }
 
