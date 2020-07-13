@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Order History{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5">
+            <h1 class="section-header">Order history</h1>
+        </div>
+        <div class="row">
+            {% if order_details %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Order Date</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in order_details %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.created | date:"d M Y"}}</td>
+                            <td>{{ order.total }}</td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><a href="">View Order</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>You have not placed any orders yet.</p>
+            <p><a href="{% url 'index' %}">Continue shopping</a> and enjoy the variety of headphones at audio24</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

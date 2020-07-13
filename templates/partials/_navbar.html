@@ -9,16 +9,23 @@
     </label>
     <ul>
         {% if request.user.is_authenticated and request.user.first_name %}
-            <li><span class="welcome-span">Welcome, {{ request.user.first_name }}</span></li>
-            <li><a href="{% url 'signout' %}">Sign out</a></li>
+            <li>
+                <label for="btn-1" class="show">{{ request.user.first_name | slice:":1" }}{{ request.user.last_name | slice:":1" }} +</label>
+                <a href="#">{{ request.user.first_name | slice:":1" }}{{ request.user.last_name | slice:":1" }} <i class="fas fa-user"></i></a>
+                <input type="checkbox" id="btn-1" class="hide">
+                <ul>
+                    <li><a href="{% url 'order_history' %}">Order history</a></li>
+                    <li><a href="{% url 'signout' %}">Sign out</a></li>
+                </ul>
+            </li>
         {% else %}
             <li><a href="{% url 'signup' %}">Sign up</a></li>
             <li><a href="{% url 'signin' %}">Login</a></li>
         {% endif %}
         <li>
-            <label for="btn-1" class="show">Categories +</label>
+            <label for="btn-2" class="show">Categories +</label>
             <a href="#">Categories</a>
-            <input type="checkbox" id="btn-1" class="hide">
+            <input type="checkbox" id="btn-2" class="hide">
             <ul>
                 <li><a href="{% url 'index' %}">All Products</a></li>
                 {% for category in links %}
