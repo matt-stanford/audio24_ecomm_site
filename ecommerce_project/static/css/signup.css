@@ -1,9 +1,11 @@
-.signup-form-wrapper {
+.signup-form-wrapper,
+.review-form-wrapper {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
-.signup-form-wrapper label {
+.signup-form-wrapper label,
+.review-form-wrapper label {
     font-size: 14px;
     font-weight: bold;
     padding: 6px 0;
@@ -11,7 +13,9 @@
     margin-top: 15px;
 }
 
-.signup-form-wrapper input {
+.signup-form-wrapper input,
+.review-form-wrapper input,
+.review-form-wrapper textarea {
     height: 32px;
     width: 100%;
     padding: 4px 8px;
@@ -21,7 +25,9 @@
     font-size: 14px;
 }
 
-.signup-form-wrapper input:focus {
+.signup-form-wrapper input:focus,
+.review-form-wrapper input:focus,
+.review-form-wrapper textarea:focus {
     outline: none;
     border-radius: 0;
     border: 2px solid var(--secondary-color);
@@ -32,7 +38,7 @@
 }
 
 .signup-help-text {
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 50px;
 }
 
@@ -41,4 +47,9 @@
     color: var(--secondary-color);
     font-weight: bold;
     font-size: 14px;
+}
+
+textarea {
+    resize: none;
+    height: auto !important;
 }

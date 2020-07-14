@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=250, unique=True)
@@ -116,5 +117,18 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return self.product
+
+    objects = models.Manager()
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=250)
+    content = models.CharField(max_length=500)
+    rating = models.IntegerField(blank=True, null=True)
+    created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
 
     objects = models.Manager()

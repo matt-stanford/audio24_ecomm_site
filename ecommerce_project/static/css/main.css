@@ -58,12 +58,20 @@ a:hover, a:active {
     text-align: left;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .py-5 {
     padding: 3rem 0;
 }
 
 .mt-5 {
     margin-top: 3rem;
+}
+
+.mt-15 {
+    margin-top: 15px;
 }
 
 .mx-5 {
@@ -239,6 +247,15 @@ a:hover, a:active {
     padding-bottom: 50px;
     animation-name: modalopen;
     animation-duration: 0.8s;
+}
+
+.stars-wrapper {
+    cursor: pointer;
+}
+
+.fa-star {
+    color: var(--primary-color);
+    font-size: 20px;
 }
 
 @keyframes modalopen {

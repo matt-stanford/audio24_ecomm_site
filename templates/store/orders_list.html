@@ -42,7 +42,7 @@
                             </td>
                             <td>
                                 <div class="table-responsive-header">Action</div>
-                                <div class="table-responsive-content"><a href="">View Order</a></div>
+                                <div class="table-responsive-content"><a href="{% url 'order_detail' order.id %}">View Order</a></div>
                             </td>
                         </tr>
                     {% endfor %}

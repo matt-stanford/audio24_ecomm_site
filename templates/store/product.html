@@ -166,5 +166,36 @@
             <h1 class="product-description">Product Description</h1>
             <p class="product-detail">{{ product.description }}</p>
         </div>
+
+        <div class="row mt-5">
+            <h1 class="product-description">Reviews</h1>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="review-form-wrapper">
+            <form method="POST">
+                {% csrf_token %}
+                <label for="stars">Rating</label>
+                <input type="hidden" name="rating" value="0" class="stars">
+                <div class="stars-wrapper">
+                    <span class="far fa-star"></span>
+                    <span class="far fa-star"></span>
+                    <span class="far fa-star"></span>
+                    <span class="far fa-star"></span>
+                    <span class="far fa-star"></span>
+                </div>
+                <label for="title">Title of Review</label>
+                <input type="text" name="title" id="title">
+                <label for="content">How was your overall experience?</label>
+                <textarea name="content"></textarea>
+                <button type="submit" class="btn btn-submit mt-15">Submit</button>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if reviews %}
+            {% for review in reviews %}
+                {{ review }}
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}

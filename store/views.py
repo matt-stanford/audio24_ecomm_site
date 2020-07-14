@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Category, Cart, CartItem, Order, OrderItem
+from .models import Product, Category, Cart, CartItem, Order, OrderItem, Review
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 import stripe
@@ -45,6 +45,15 @@ def product(request, category_slug, product_slug):
 
     except Exception as e:
         raise e
+
+    if request.method == 'POST' and request.user.is_authenticated and request.POST['content'].strip() != '':
+        rating = request.POST['rating']
+        title = request.POST['title']
+        content = request.POST['content']
+        Review.objects.create(user=request.user, product=product, rating=rating, title=title, content=content)
+
+    reviews = Review.objects.filter(product=product)
+
     context = {
         'product': product,
         'three_monthly': three_monthly,
@@ -53,7 +62,8 @@ def product(request, category_slug, product_slug):
         'six_interest': six_interest,
         'twelve_monthly': twelve_monthly,
         'twelve_total': twelve_total,
-        'twelve_interest': twelve_interest
+        'twelve_interest': twelve_interest,
+        'reviews': reviews
     }
 
     return render(request, 'store/product.html', context)
@@ -250,3 +260,15 @@ def orderHistory(request):
         email = request.user.email
         order_details = Order.objects.filter(emailAddress=email)
     return render(request, 'store/orders_list.html', {'order_details': order_details})
+
+@login_required(redirect_field_name='next', login_url='signin')
+def viewOrder(request, order_id):
+    if request.user.is_authenticated:
+        email = request.user.email
+        order = Order.objects.get(id=order_id, emailAddress=email)
+        order_items = OrderItem.objects.filter(order=order)
+    return render(request, 'store/order_detail.html', {'order': order, 'order_items': order_items})
+
+def search(request):
+    products = Product.objects.filter(name__contains=request.GET['search'])
+    return render(request, 'store/index.html', {'products': products})

@@ -1,10 +1,8 @@
+// cart buttons
+
 let addBtns = Array.from(document.querySelectorAll('#add'));
 let subtractBtns = Array.from(document.querySelectorAll('#subtract'));
 let deleteBtns = Array.from(document.querySelectorAll('#delete'));
-
-const affirmOpen = document.querySelector('.affirm-modal-trigger');
-const affirmClose = document.querySelector('.affirm-modal-close-btn');
-const affirmModal = document.querySelector('.affirm-modal');
 
 addBtns.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -24,6 +22,12 @@ subtractBtns.forEach(btn => {
     });
 });
 
+// affirm modal
+
+const affirmOpen = document.querySelector('.affirm-modal-trigger');
+const affirmClose = document.querySelector('.affirm-modal-close-btn');
+const affirmModal = document.querySelector('.affirm-modal');
+
 affirmOpen.addEventListener('click', function() {
     affirmModal.style.display = 'block'
 });
@@ -37,3 +41,28 @@ window.addEventListener('click', function(e) {
         affirmModal.style.display = 'none'
     }
 });
+
+// star rating
+
+let stars = Array.from(document.querySelectorAll('.fa-star'));
+
+stars.forEach((star, index) => {
+    star.addEventListener('click', (function(idx) {
+        document.querySelector('.stars').setAttribute('value', idx + 1);
+        setRating();
+    }).bind(window, index));
+});
+
+function setRating() {
+    let stars = Array.from(document.querySelectorAll('.fa-star'));
+    let rating = parseInt(document.querySelector('.stars').getAttribute('value'));
+    stars.forEach((star, index) => {
+        if (rating > index) {
+            star.classList.replace('far', 'fas');
+            console.log('added rated on', index );
+        } else {
+            star.classList.replace('fas', 'far')
+            console.log('removed rated on', index );
+        }
+    });
+}
