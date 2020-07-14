@@ -24,11 +24,26 @@
                 <tbody>
                     {% for order in order_details %}
                         <tr>
-                            <td>{{ order.id }}</td>
-                            <td>{{ order.created | date:"d M Y"}}</td>
-                            <td>{{ order.total }}</td>
-                            <td><i class="fas fa-check"></i></td>
-                            <td><a href="">View Order</a></td>
+                            <td>
+                                <div class="table-responsive-header">Order Number</div>
+                                <div class="table-responsive-content">{{ order.id }}</div>
+                            </td>
+                            <td>
+                                <div class="table-responsive-header">Order Date</div>
+                                <div class="table-responsive-content">{{ order.created | date:"d M Y"}}</div>
+                            </td>
+                            <td>
+                                <div class="table-responsive-header">Total Amount</div>
+                                <div class="table-responsive-content">{{ order.total }}</div>
+                            </td>
+                            <td>
+                                <div class="table-responsive-header">Status</div>
+                                <div class="table-responsive-content"><i class="fas fa-check"></i></div>
+                            </td>
+                            <td>
+                                <div class="table-responsive-header">Action</div>
+                                <div class="table-responsive-content"><a href="">View Order</a></div>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
