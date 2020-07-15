@@ -145,6 +145,9 @@
                                 <!-- <a href="{% url 'add_cart' product.id %}"><button type="button" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button></a> -->
                                 <button type="submit" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button>
                             </div>
+                            <div class="wishlist-btn">
+                                <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist"><span class="far fa-heart"></span></a>
+                            </div>
                         </div>
                         <div class="product-help-text">
                             <ul>

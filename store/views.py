@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Category, Cart, CartItem, Order, OrderItem, Review
+from .models import Product, Category, Cart, CartItem, Order, OrderItem, Review, Wishlist
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 import stripe
@@ -272,3 +272,24 @@ def viewOrder(request, order_id):
 def search(request):
     products = Product.objects.filter(name__contains=request.GET['search'])
     return render(request, 'store/index.html', {'products': products})
+
+def add_to_wishlist(request, product_id):
+    user = request.user
+    product = Product.objects.get(id=product_id)
+
+    try:
+        wishlist = Wishlist.objects.get(user=user)
+        wishlist.product = product
+        
+    except Wishlist.DoesNotExist:
+        wishlist = Wishlist.objects.create(user=user, product=product)
+
+    wishlist.save()
+    return HttpResponse(status=204)
+
+def wishlistView(request):
+    try:
+        wishlist = Wishlist.objects.filter(user=request.user)
+        return render(request, 'store/wishlist.html', {'wishlist': wishlist})
+    except ObjectDoesNotExist:
+        return render(request, 'store/wishlist.html')

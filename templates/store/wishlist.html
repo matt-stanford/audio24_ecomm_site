@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% block title %}Wishlist{% endblock %}
+
+{% block content %}
+
+    {% if wishlist %}
+        {{ wishlist }}
+    {% else %}
+        no wishlist
+    {% endif %}
+
+{% endblock %}

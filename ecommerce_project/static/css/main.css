@@ -192,6 +192,21 @@ a:hover, a:active {
     margin-bottom: 11px;
 }
 
+.wishlist-btn {
+    width: 42px;
+    height: 42px;
+    margin-left: 10px;
+    background: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wishlist-btn span {
+    color: #fff;
+    font-size: 20px;
+}
+
 .affirm-logo {
     position: relative;
     font-weight: 600;
