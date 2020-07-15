@@ -508,6 +508,10 @@ tr:last-child {
     font-weight: bold;
 }
 
+.table-flex-content {
+    display: flex;
+}
+
 .cart-image {
     border-bottom: none;
     text-align: center;

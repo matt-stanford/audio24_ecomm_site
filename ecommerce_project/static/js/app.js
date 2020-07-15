@@ -44,7 +44,7 @@ window.addEventListener('click', function(e) {
 
 // star rating
 
-let stars = Array.from(document.querySelectorAll('.fa-star'));
+let stars = Array.from(document.querySelectorAll('.star-rating'));
 
 stars.forEach((star, index) => {
     star.addEventListener('click', (function(idx) {
@@ -54,7 +54,7 @@ stars.forEach((star, index) => {
 });
 
 function setRating() {
-    let stars = Array.from(document.querySelectorAll('.fa-star'));
+    let stars = Array.from(document.querySelectorAll('.star-rating'));
     let rating = parseInt(document.querySelector('.stars').getAttribute('value'));
     stars.forEach((star, index) => {
         if (rating > index) {

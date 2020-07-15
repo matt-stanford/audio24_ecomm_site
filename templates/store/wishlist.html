@@ -7,11 +7,58 @@
 {% block title %}Wishlist{% endblock %}
 
 {% block content %}
-
     {% if wishlist %}
-        {{ wishlist }}
-    {% else %}
-        no wishlist
-    {% endif %}
+        <div class="container">
+            <div class="row mt-5">
+                <h1 class="section-header">Your wishlist</h1>
+            </div>
+        </div>
 
+        <div class="container-fluid">
+            <div class="row">
+                <table>
+                    <thead>
+                        <th colspan="2">Product</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        {% for item in wishlist %}
+                        <tr>
+                            <td class="cart-image">
+                                <div class="table-responsive-header text-left">Product</div>
+                                <a href="{{ item.product.get_url }}"><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></a>
+                            </td>
+                            <td class="text-left"><a href="{{ item.product.get_url }}">{{ item.product.name }}</a></td>
+                            <td>
+                                <div class="table-responsive-header">Price</div>
+                                <div class="table-responsive-content">${{ item.product.price }}</div>
+                            </td>
+                            <td>
+                                <div class="table-responsive-header">Availability</div>
+                                <div class="table-responsive-content">{% if item.product.stock > 0 %}Available{% else %}Out of stock{% endif %}</div>
+                            </td>
+                            <td>
+                                <div class="table-flex-content">
+                                    <a href="{{ item.product.get_url }}"><button class="btn btn-submit">View product</button></a>
+                                    <div class="wishlist-btn">
+                                        <a href="{% url 'remove_from_wishlist' item.product.id %}"><span class="fas fa-times"></span></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <div class="container">
+            <div class="row mt-5 text-center">
+                <h1 class="section-header">Your wishlist is empty</h1>
+                <p>Please click <a href="{% url 'index' %}">here</a> to continue shopping.</p>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

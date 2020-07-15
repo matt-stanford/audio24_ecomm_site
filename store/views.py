@@ -274,22 +274,24 @@ def search(request):
     return render(request, 'store/index.html', {'products': products})
 
 def add_to_wishlist(request, product_id):
-    user = request.user
-    product = Product.objects.get(id=product_id)
-
-    try:
-        wishlist = Wishlist.objects.get(user=user)
-        wishlist.product = product
-        
-    except Wishlist.DoesNotExist:
-        wishlist = Wishlist.objects.create(user=user, product=product)
-
+    wishlist = Wishlist()
+    wishlist.user = request.user
+    wishlist.product = Product.objects.get(id=product_id)
     wishlist.save()
     return HttpResponse(status=204)
 
+def remove_from_wishlist(request, product_id):
+    user = request.user
+    product = Product.objects.get(id=product_id)
+    wishlist = Wishlist.objects.get(user=user, product=product)
+    wishlist.delete()
+    return redirect('wishlist')
+
 def wishlistView(request):
-    try:
-        wishlist = Wishlist.objects.filter(user=request.user)
-        return render(request, 'store/wishlist.html', {'wishlist': wishlist})
-    except ObjectDoesNotExist:
-        return render(request, 'store/wishlist.html')
+    if request.user.is_authenticated:
+        try:
+            wishlist = Wishlist.objects.filter(user=request.user)
+            return render(request, 'store/wishlist.html', {'wishlist': wishlist})
+        except ObjectDoesNotExist:
+            pass
+    return render(request, 'store/wishlist.html')
