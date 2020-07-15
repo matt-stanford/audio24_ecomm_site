@@ -169,33 +169,53 @@
 
         <div class="row mt-5">
             <h1 class="product-description">Reviews</h1>
-        </div>
-        {% if user.is_authenticated %}
-        <div class="review-form-wrapper">
-            <form method="POST">
-                {% csrf_token %}
-                <label for="stars">Rating</label>
-                <input type="hidden" name="rating" value="0" class="stars">
-                <div class="stars-wrapper">
-                    <span class="far fa-star"></span>
-                    <span class="far fa-star"></span>
-                    <span class="far fa-star"></span>
-                    <span class="far fa-star"></span>
-                    <span class="far fa-star"></span>
+            {% if user.is_authenticated %}
+                <div class="review-form-wrapper">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label for="stars">Rating</label>
+                        <input type="hidden" name="rating" value="0" class="stars">
+                        <div class="stars-wrapper">
+                            <span class="far fa-star">&nbsp;</span>
+                            <span class="far fa-star">&nbsp;</span>
+                            <span class="far fa-star">&nbsp;</span>
+                            <span class="far fa-star">&nbsp;</span>
+                            <span class="far fa-star">&nbsp;</span>
+                        </div>
+                        <label for="title">Title of Review</label>
+                        <input type="text" name="title" id="title">
+                        <label for="content">How was your overall experience?</label>
+                        <textarea name="content"></textarea>
+                        <button type="submit" class="btn btn-submit mt-15">Submit</button>
+                    </form>
                 </div>
-                <label for="title">Title of Review</label>
-                <input type="text" name="title" id="title">
-                <label for="content">How was your overall experience?</label>
-                <textarea name="content"></textarea>
-                <button type="submit" class="btn btn-submit mt-15">Submit</button>
-            </form>
+            {% endif %}
+                <div class="review-main">
+                    {% if reviews %}
+                        {% for review in reviews %}
+                            <div class="review-wrapper">
+                                <div class="review-header">
+                                    <div class="review-avatar-wrapper">
+                                        <div class="review-avatar">{{ review.user.first_name | slice:":1" }}{{ review.user.last_name | slice:":1" }}</div>
+                                    </div>
+                                    <div class="review-header-details">
+                                        <div class="review-rating-content">
+                                            <div class="review-author">{{ review.user.first_name }} {{ review.user.last_name }}</div>
+                                            <div class="review-rating">{% for i in "12345" %}<span class="fas fa-star">&nbsp;</span>{% endfor %}</div>
+                                        </div>
+                                        <div class="review-date-content">
+                                            <div class="review-created">{{ review.created | date:"d M Y" }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-body">
+                                    <div class="review-title">{{ review.title }}</div>
+                                    <div class="review-content">{{ review.content }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
         </div>
-        {% endif %}
-
-        {% if reviews %}
-            {% for review in reviews %}
-                {{ review }}
-            {% endfor %}
-        {% endif %}
     </div>
 {% endblock %}

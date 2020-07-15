@@ -132,3 +132,14 @@ class Review(models.Model):
         return self.title
 
     objects = models.Manager()
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'Wishlist'
+        ordering = ['-added']
+
+    objects = models.Manager()
