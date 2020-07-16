@@ -145,10 +145,16 @@
                                 <!-- <a href="{% url 'add_cart' product.id %}"><button type="button" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button></a> -->
                                 <button type="submit" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button>
                             </div>
-                            <div>
-                                <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist" class=" btn wishlist-btn" id="add-to-wishlist"><span class="far fa-heart"></span></a>
-                                <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn" id="go-to-wishlist"><span class="fas fa-heart"></span></a>
-                            </div>
+                            {% if wishlist %}
+                                <div>
+                                    <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn"><span class="fas fa-heart"></span></a>
+                                </div>
+                            {% else %}
+                                <div>
+                                    <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist" class=" btn wishlist-btn" id="add-to-wishlist"><span class="far fa-heart"></span></a>
+                                    <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn" id="go-to-wishlist"><span class="fas fa-heart"></span></a>
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="product-help-text">
                             <ul>

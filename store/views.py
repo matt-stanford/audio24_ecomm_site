@@ -52,19 +52,35 @@ def product(request, category_slug, product_slug):
         content = request.POST['content']
         Review.objects.create(user=request.user, product=product, rating=rating, title=title, content=content)
 
+    
     reviews = Review.objects.filter(product=product)
 
-    context = {
-        'product': product,
-        'three_monthly': three_monthly,
-        'six_monthly': six_monthly,
-        'six_total': six_total,
-        'six_interest': six_interest,
-        'twelve_monthly': twelve_monthly,
-        'twelve_total': twelve_total,
-        'twelve_interest': twelve_interest,
-        'reviews': reviews
-    }
+    try:
+        wishlist = Wishlist.objects.get(user=request.user, product=product)
+        context = {
+            'product': product,
+            'three_monthly': three_monthly,
+            'six_monthly': six_monthly,
+            'six_total': six_total,
+            'six_interest': six_interest,
+            'twelve_monthly': twelve_monthly,
+            'twelve_total': twelve_total,
+            'twelve_interest': twelve_interest,
+            'reviews': reviews,
+            'wishlist': wishlist
+        }
+    except Wishlist.DoesNotExist:
+        context = {
+            'product': product,
+            'three_monthly': three_monthly,
+            'six_monthly': six_monthly,
+            'six_total': six_total,
+            'six_interest': six_interest,
+            'twelve_monthly': twelve_monthly,
+            'twelve_total': twelve_total,
+            'twelve_interest': twelve_interest,
+            'reviews': reviews
+        }
 
     return render(request, 'store/product.html', context)
 
