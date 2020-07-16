@@ -151,6 +151,10 @@ a:hover, a:active {
     padding: 30px;
 }
 
+.product-info {
+    padding-top: 30px;
+}
+
 .product-title, .product-description {
     text-transform: uppercase;
     font-weight: 700;
@@ -234,44 +238,6 @@ a:hover, a:active {
     transform: rotate(30deg);
 }
 
-.affirm-modal-trigger {
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-.affirm-modal-trigger:hover {
-    color: var(--secondary-color);
-}
-
-.affirm-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: rgba(0, 0, 0, .8);
-    z-index: 2;
-    animation-name: modalopen;
-    animation-duration: 0.6s;
-}
-
-.affirm-modal h1 {
-    font-size: 26px;
-}
-
-.affirm-modal-content {
-    position: relative;
-    display: flex;
-    max-width: 640px;
-    background: var(--off-white);
-    padding: 20px;
-    padding-bottom: 50px;
-    animation-name: modalopen;
-    animation-duration: 0.8s;
-}
-
 .stars-wrapper {
     cursor: pointer;
 }
@@ -279,90 +245,6 @@ a:hover, a:active {
 .fa-star {
     color: var(--primary-color);
     font-size: 20px;
-}
-
-@keyframes modalopen {
-    from { opacity: 0;}
-    to { opacity: 1;}
-}
-
-.affirm-modal-inner {
-    margin: 0 auto;
-    max-width: 416px;
-    min-height: 250px;
-    width: 100%;
-}
-
-.affirm-modal-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-    text-align: center;
-}
-
-.affirm-modal-close-btn {
-    position: absolute;
-    top: 0;
-    color: var(--primary-color);
-    float: right;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.affirm-modal-close-btn:hover,
-.affirm-modal-close-btn:focus {
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-.affirm-modal-body {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.affirm-modal-body-title {
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
-.affirm-modal-card-wrapper {
-    width: 100%;
-}
-
-.affirm-modal-list {
-    display: block;
-}
-
-.affirm-modal-card {
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(6,8,9,.16);
-    list-style: none !important;
-    margin-bottom: 20px;
-}
-
-.affirm-modal-card-header,
-.affirm-modal-card-body {
-    display: flex;
-    justify-content: space-between;
-}
-
-.affirm-modal-card-header {
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-.affirm-modal-card-info {
-    margin-right: 10px;
-}
-
-.affirm-modal-card-info-header {
-    font-weight: 700;
 }
 
 .subscript {
@@ -393,11 +275,12 @@ a:hover, a:active {
 
 .product-action {
     display: flex;
-    padding: 10px 0 20px;
+    flex-wrap: wrap;
+    padding: 10px 0 10px 0;
 }
 
 .product-quantity-box {
-    margin-right: 10px;
+    margin: 0 10px 10px 0;
 }
 
 .btn {
@@ -634,10 +517,6 @@ tr:last-child {
 
     .btn-update-cart {
         margin: 0 0 0 10px;
-    }
-
-    .affirm-modal-content {
-        margin: 100px auto;
     }
 
     .cart-buttons {

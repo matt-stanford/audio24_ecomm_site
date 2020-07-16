@@ -42,6 +42,20 @@ window.addEventListener('click', function(e) {
     }
 });
 
+// price match modal
+
+const priceMatchOpen = document.querySelector('.price-match-modal-trigger');
+const priceMatchClose = document.querySelector('.price-match-modal-close-btn');
+const priceMatchModal = document.querySelector('.price-match-modal');
+
+priceMatchOpen.addEventListener('click', function() {
+    priceMatchModal.style.display = 'block';
+});
+
+priceMatchClose.addEventListener('click', function() {
+    priceMatchModal.style.display = 'none';
+});
+
 // star rating
 
 let stars = Array.from(document.querySelectorAll('.star-rating'));
