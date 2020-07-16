@@ -9,6 +9,7 @@ from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 def index(request, category_slug=None):
     category_page = None
@@ -54,6 +55,7 @@ def product(request, category_slug, product_slug):
 
     
     reviews = Review.objects.filter(product=product)
+    ratings = Review.objects.filter(product=product).aggregate(average=Avg('rating'))
 
     try:
         wishlist = Wishlist.objects.get(user=request.user, product=product)
@@ -67,6 +69,7 @@ def product(request, category_slug, product_slug):
             'twelve_total': twelve_total,
             'twelve_interest': twelve_interest,
             'reviews': reviews,
+            'ratings': ratings,
             'wishlist': wishlist
         }
     except Wishlist.DoesNotExist:
@@ -79,7 +82,8 @@ def product(request, category_slug, product_slug):
             'twelve_monthly': twelve_monthly,
             'twelve_total': twelve_total,
             'twelve_interest': twelve_interest,
-            'reviews': reviews
+            'reviews': reviews,
+            'ratings': ratings,
         }
 
     return render(request, 'store/product.html', context)

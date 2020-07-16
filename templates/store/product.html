@@ -15,6 +15,12 @@
             <div class="product-wrapper">
                 <div>
                     <h1 class="product-title">{{ product.name }}</h1>
+                    <div class="review-average mb-10" data-rating="{{ ratings.average }}">
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-reviews">{{ reviews.count }} review{% if reviews.count > 1 %}s{% endif %}</span>
+                    </div>
                     <p class="product-sku">Product SKU:
                         <span class="variant-sku">UTOPIA</span>
                     </p>
@@ -178,7 +184,9 @@
         </div>
 
         <div class="row mt-5">
-            <h1 class="product-description">Reviews</h1>
+            <div class="review-section-header">
+                <h1 class="review-section-title">Reviews</h1><span class="review-count">{{ reviews.count }}</span>
+            </div>
             {% if user.is_authenticated %}
                 <div class="review-form-wrapper">
                     <form method="POST">
@@ -201,7 +209,7 @@
                 </div>
             {% endif %}
                 <div class="review-main">
-                    {% if reviews %}
+                    <!-- {% if reviews %} -->
                         {% for review in reviews %}
                             <div class="review-wrapper">
                                 <div class="review-header">
@@ -231,7 +239,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                    {% endif %}
+                    <!-- {% endif %} -->
                 </div>
         </div>
     </div>

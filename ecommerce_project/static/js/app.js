@@ -67,6 +67,13 @@ function setRating() {
     });
 }
 
+// average rating
+
+const rating = document.querySelector('.review-average').getAttribute('data-rating')
+const starPercentage = `${Math.round(rating / 5 * 100) / 10 * 10}%`
+
+document.querySelector('.stars-inner').style.width = starPercentage;
+
 // wishlist button change
 
 let addToWishlist = document.querySelector('#add-to-wishlist');
