@@ -192,6 +192,14 @@ a:hover, a:active {
     margin-bottom: 11px;
 }
 
+#add-to-wishlist {
+    display: flex;
+}
+
+#go-to-wishlist {
+    display: none;
+}
+
 .wishlist-btn {
     width: 42px;
     height: 42px;
@@ -397,6 +405,11 @@ a:hover, a:active {
     border: none;
     outline: none;
     cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
 }
 
 .btn-quantity, .product-form-quantity {

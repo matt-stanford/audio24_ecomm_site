@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, OrderItem, Order, Review
+from .models import Category, Product, OrderItem, Order, Review, Wishlist
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
@@ -55,3 +55,4 @@ class OrderAdmin(admin.ModelAdmin):
         return False
 
 admin.site.register(Review)
+admin.site.register(Wishlist)

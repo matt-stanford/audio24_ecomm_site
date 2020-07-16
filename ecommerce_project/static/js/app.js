@@ -66,3 +66,13 @@ function setRating() {
         }
     });
 }
+
+// wishlist button change
+
+let addToWishlist = document.querySelector('#add-to-wishlist');
+let goToWishlist = document.querySelector('#go-to-wishlist');
+
+addToWishlist.addEventListener('click', function() {
+    addToWishlist.style.display = 'none';
+    goToWishlist.style.display = 'flex';
+});

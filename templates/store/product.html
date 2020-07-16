@@ -145,8 +145,9 @@
                                 <!-- <a href="{% url 'add_cart' product.id %}"><button type="button" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button></a> -->
                                 <button type="submit" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button>
                             </div>
-                            <div class="wishlist-btn">
-                                <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist"><span class="far fa-heart"></span></a>
+                            <div>
+                                <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist" class=" btn wishlist-btn" id="add-to-wishlist"><span class="far fa-heart"></span></a>
+                                <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn" id="go-to-wishlist"><span class="fas fa-heart"></span></a>
                             </div>
                         </div>
                         <div class="product-help-text">
@@ -204,7 +205,14 @@
                                     <div class="review-header-details">
                                         <div class="review-rating-content">
                                             <div class="review-author">{{ review.user.first_name }} {{ review.user.last_name }}</div>
-                                            <div class="review-rating">{% for i in "12345" %}<span class="fas fa-star">&nbsp;</span>{% endfor %}</div>
+                                            <div class="review-rating">
+                                                {% if review.rating == 1 %}<span class="fas fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span>
+                                                {% elif review.rating == 2 %}<span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span>
+                                                {% elif review.rating == 3 %}<span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span>
+                                                {% elif review.rating == 4 %}<span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="far fa-star">&nbsp;</span>
+                                                {% elif review.rating == 5 %}<span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span><span class="fas fa-star">&nbsp;</span>
+                                                {% endif %}
+                                            </div>
                                         </div>
                                         <div class="review-date-content">
                                             <div class="review-created">{{ review.created | date:"d M Y" }}</div>

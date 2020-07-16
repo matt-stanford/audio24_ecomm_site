@@ -42,8 +42,8 @@
                             <td>
                                 <div class="table-flex-content">
                                     <a href="{{ item.product.get_url }}"><button class="btn btn-submit">View product</button></a>
-                                    <div class="wishlist-btn">
-                                        <a href="{% url 'remove_from_wishlist' item.product.id %}"><span class="fas fa-times"></span></a>
+                                    <div>
+                                        <a href="{% url 'remove_from_wishlist' item.product.id %}"  class="btn wishlist-btn"><span class="fas fa-times"></span></a>
                                     </div>
                                 </div>
                             </td>
