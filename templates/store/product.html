@@ -201,8 +201,7 @@
                                             <div class="offer-panel-form">
                                                 <p class="price-match-text">Fill out the information below and we will match the current pre-tax price for identical, immediately available products from authorized USA online dealers (with a 4 star rating or above) based on the total purchase price of our competitor, including shipping. <a href="{% url 'price_match_guarantee' %}">See our full policy</a>.</p>
                                                 <div class="price-match-form-wrapper">
-                                                    <form method="POST">
-                                                        {% csrf_token %}
+                                                    <div>
                                                         <label for="email">Email</label>
                                                         <input type="email" name="email" id="email" placeholder="Email">
                                                         <label for="phone">Phone</label>
@@ -218,8 +217,15 @@
                                                             </label>
                                                             <button type="submit" class="btn btn-submit" id="price-match-submit" title="Please agree to privacy policy" disabled>Send</button>
                                                         </div>
-                                                        
-                                                    </form>
+                                                    </div>
+                                                </div>
+                                                <div class="price-match-submitted">
+                                                    <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+                                                        <g>
+                                                            <ellipse stroke="#3aafa9" ry="25.174826" rx="25.174826" id="mycircle" cy="28.000001" cx="28" stroke-width="2" fill="none"/>
+                                                            <path stroke="#3aafa9" id="mycheck" d="m10.412061,30.953496l10.40055,10.547036l24.463265,-24.609752" stroke-width="2" fill="none"/>
+                                                        </g>
+                                                    </svg>
                                                 </div>
                                             </div>
                                         </div>
