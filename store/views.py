@@ -315,3 +315,9 @@ def wishlistView(request):
         except ObjectDoesNotExist:
             pass
     return render(request, 'store/wishlist.html')
+
+def price_match_privacy(request):
+    return render(request, 'store/privacy.html')
+
+def price_match_guarantee(request):
+    return render(request, 'store/guarantee.html')

@@ -47,6 +47,8 @@ window.addEventListener('click', function(e) {
 const priceMatchOpen = document.querySelector('.price-match-modal-trigger');
 const priceMatchClose = document.querySelector('.price-match-modal-close-btn');
 const priceMatchModal = document.querySelector('.price-match-modal');
+const priceMatchCheckbox = document.querySelector('#price-match-checkbox');
+const priceMatchSubmit = document.querySelector('#price-match-submit');
 
 priceMatchOpen.addEventListener('click', function() {
     priceMatchModal.style.display = 'block';
@@ -55,6 +57,24 @@ priceMatchOpen.addEventListener('click', function() {
 priceMatchClose.addEventListener('click', function() {
     priceMatchModal.style.display = 'none';
 });
+
+window.addEventListener('click', function(e) {
+    if (e.target == priceMatchModal) {
+        priceMatchModal.style.display = 'none'
+    }
+});
+
+priceMatchCheckbox.addEventListener('click', function() {
+    if (priceMatchCheckbox.checked == true) {
+        console.log('checked')
+        priceMatchSubmit.disabled = false;
+        priceMatchSubmit.setAttribute('title', '')
+    } else {
+        priceMatchSubmit.disabled = true;
+        priceMatchSubmit.setAttribute('title', 'Please agree to privacy policy');
+    }
+});
+
 
 // star rating
 

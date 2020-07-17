@@ -20,4 +20,6 @@ urlpatterns = [
     path('wishlist/add/<int:product_id>', views.add_to_wishlist, name='add_to_wishlist'),
     path('wishlist/', views.wishlistView, name='wishlist'),
     path('wishlist/remove/<int:product_id>', views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('privacy/', views.price_match_privacy, name='price_match_privacy'),
+    path('price-match-guarantee/', views.price_match_guarantee, name='price_match_guarantee'),
 ]

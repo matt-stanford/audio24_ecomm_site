@@ -198,7 +198,30 @@
                                                 <h4>{{ product.name }}</h4>
                                                 <p>${{ product.price | intcomma }}</p>
                                             </div>
-                                            <div class="offer-panel-form"></div>
+                                            <div class="offer-panel-form">
+                                                <p class="price-match-text">Fill out the information below and we will match the current pre-tax price for identical, immediately available products from authorized USA online dealers (with a 4 star rating or above) based on the total purchase price of our competitor, including shipping. <a href="{% url 'price_match_guarantee' %}">See our full policy</a>.</p>
+                                                <div class="price-match-form-wrapper">
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <label for="email">Email</label>
+                                                        <input type="email" name="email" id="email" placeholder="Email">
+                                                        <label for="phone">Phone</label>
+                                                        <input type="text" name="phone" id="phone" placeholder="Optional">
+                                                        <label for="price">Price</label>
+                                                        <input type="text" name="price" id="price" placeholder="$">
+                                                        <label for="url">Link to lower price</label>
+                                                        <input type="text" name="url" id="url" placeholder="URL">
+                                                        <div class="price-match-form-submit">
+                                                            <label class="checkbox-container">I agree to&nbsp;<a href="{% url 'price_match_privacy' %}">privacy policy</a>
+                                                                <input type="checkbox" id="price-match-checkbox">
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                            <button type="submit" class="btn btn-submit" id="price-match-submit" title="Please agree to privacy policy" disabled>Send</button>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
