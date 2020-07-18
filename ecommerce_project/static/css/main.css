@@ -457,7 +457,8 @@ tr:last-child {
     margin: 20px 0;
 }
 
-.privacy-wrapper {
+.privacy-wrapper,
+.contact-wrapper {
     padding: 20px;
 }
 

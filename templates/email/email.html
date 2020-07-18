@@ -1,88 +1,138 @@
+{% load static %}
+{% load add_days %}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>New Order #{{ transaction.id }} - audio24</title>
-		<style>
-			table {
-				width: 60%;
-				margin: 0 auto;
-				border-collapse: collapse;
-			}
-			table tr td {
-				border: 1px solid #c1c1c1;
-			}
-			p {
-				padding-right: 50px;
-				padding-left: 50px;
-			}
-		</style>
 	</head>
 	<body>
-		<center>
-			<h1>Thanks for shopping with us</h1>
-			<p>This email is to confirm that you have placed an order at audio24.com.<br>Please make sure that all the details of your order are correct.</p>
-		</center>
-		<br>
-		<table>
-			<tr>
-				<td valign="top" colspan="2" style="width: 50%;">
-					<b>Bill to:</b><br>
-					{{ transaction.billingName }}<br>
-					{{ transaction.billingAddress1 }}<br>
-					{{ transaction.billingCity }}<br>
-					{{ transaction.billingPostcode }}<br>
-					{{ transaction.billingCountry }}<br>
-				</td>
-				<td valign="top" colspan="2" style="width: 50%;">
-					<b>Order: </b>#{{ transaction.id }}<br>
-					<b>Date: </b>{{ transaction.created|date:"d M Y" }}
-				</td>
-			</tr>
-			<tr>
-				<td><b>Product Description</b></td>
-				<td><b>Qty</b></td>
-				<td><b>Unit Price</b></td>
-				<td><b>Sub-Total</b></td>
-			</tr>
-			{% for item in order_items %}
-			<tr>
-				<td>{{ item.product }}</td>
-				<td>{{ item.quantity }}</td>
-				<td>${{ item.price }}</td>
-				<td>${{ item.sub_total }}</td>
-			</tr>
-			{% endfor %}
-			<tr>
-				<td colspan="3" style="text-align: right;"><b>Total</b></td>
-				<td>${{ transaction.total }}</td>
-			</tr>
-			<tr>
-				<td colspan="3" style="text-align: right;"><b>Total paid</b></td>
-				<td>${{ transaction.total }}</td>
-			</tr>
-			<tr>
-				<td valign="top" colspan="2" style="width: 50%;">
-					<b>Ship to:</b><br>
-					{{ transaction.shippingName }}<br>
-					{{ transaction.shippingAddress1 }}<br>
-					{{ transaction.shippingCity }}<br>
-					{{ transaction.shippingPostcode }}<br>
-					{{ transaction.shippingCountry }}<br>
-				</td>
-				<td valign="top" colspan="2" style="width: 50%;">
-					<b>Payment details:</b><br>
-					${{ transaction.total }} was paid successfully via Stripe.
-				</td>
-			</tr>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#3aafa9" style="font-family: 'Poppins', Arial, sans-serif;">
+			<tbody>
+				<tr>
+					<td>
+						<table align="center" border="0" cellpadding="0" cellspacing="0" width="640" style="border-collapse: collapse;">
+							<tr>
+								<td align="center" bgcolor="#17252a" style="padding: 10px 0 10px 0;">
+									<p style="font-size: 30px; font-weight: 600; color: #ffffff;">audio<span style="font-size: 24; font-weight: 700; color: #3aafa9;">24</span></p>
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px">
+									<table border="0" cellspacing="0" cellpadding="0" width="100%">
+										<tr>
+											<td style="line-height: 20px; font-size: 15px; padding-bottom: 20px;">
+												<p>
+													Hi {{ transaction.billingName }}
+													<br><br>
+													Great news! Your order <strong>{{ transaction.id }}</strong> is being processed and will be with you soon.
+													<br><br>
+													Your estimated delivery date is <strong>{{ transaction.created | add_days:2 | date:"d M Y" }}</strong> and you can check your order’s status by clicking below.
+												</p>
+												<table>
+													<tbody>
+														<tr>
+															<td valign="middle" align="center">
+																<table class="border-radius-table" width="190" height="40" cellspacing="0" cellpadding="0" border="0" bgcolor="#3aafa9">
+																	<tbody>
+																	  <tr>
+																		<td valign="middle" align="center">
+																		  <a href="{% url 'order_detail' transaction.id %}" style="font-size: 15px; line-height: 30px; color: #ffffff; font-weight: bold; text-decoration: none;" target="_blank" title="Link opens page in a new window"  >ORDER DETAILS</a>
+																		</td>
+																	  </tr>
+																	</tbody>
+																  </table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<p>
+													<strong>The Customer Loyalty Team</strong>
+													<br><br>
+													<em style="font-size: 11px;">*This message was sent from a 'no reply’ address</em>
+												</p>
+											</td>
+										</tr>
+									</table>
+
+									<table border="0" cellspacing="0" cellpadding="0" width="100%">
+										<tbody>
+											<tr>
+												<td><b>Product</b></td>
+												<td><b>Qty</b></td>
+												<td><b>Unit Price</b></td>
+												<td><b>Sub-Total</b></td>
+											</tr>
+											{% for item in order_items %}
+											<tr>
+												<td>{{ item.product }}</td>
+												<td>{{ item.quantity }}</td>
+												<td>${{ item.price }}</td>
+												<td>${{ item.sub_total }}</td>
+											</tr>
+											{% endfor %}
+											<tr>
+												<td colspan="3" style="text-align: right;"><b>Total</b></td>
+												<td>${{ transaction.total }}</td>
+											</tr>
+											<tr>
+												<td colspan="3" style="text-align: right;"><b>Total paid</b></td>
+												<td>${{ transaction.total }}</td>
+											</tr>
+											<tr>
+												<td height="20"></td>
+											</tr>
+											<tr>
+												<td valign="top" colspan="2" style="width: 50%;">
+													<strong>Shipping Address:</strong><br>
+													{{ transaction.shippingName }}<br>
+													{{ transaction.shippingAddress1 }}<br>
+													{{ transaction.shippingCity }}<br>
+													{{ transaction.shippingPostcode }}<br>
+													{{ transaction.shippingCountry }}<br>
+												</td>
+												<td valign="top" colspan="2" style="width: 50%;">
+													<strong>Billing Address:</strong><br>
+													{{ transaction.billingName }}<br>
+													{{ transaction.billingAddress1 }}<br>
+													{{ transaction.billingCity }}<br>
+													{{ transaction.billingPostcode }}<br>
+													{{ transaction.billingCountry }}<br>
+												</td>
+											</tr>
+											<tr>
+												<td height="20"></td>
+											</tr>
+											<tr>
+												<td valign="top" colspan="2" style="width: 50%;">
+													<strong>Order: </strong>#{{ transaction.id }}<br>
+													<strong>Estimated Delivery Date: </strong>{{ transaction.created | add_days:2 | date:"d M Y" }}<br>
+													<strong>Delivery Method: </strong>UPS_TRACKED_48
+												</td>
+												<td valign="top" colspan="2" style="width: 50%;">
+													<strong>Payment details:</strong><br>
+													${{ transaction.total }} was paid successfully via Stripe.
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</td>
+							</tr>
+							<tr>
+								<td align="center" bgcolor="#17252a" style="padding: 20px 0 20px 0; color: #ffffff; font-size: 12px;">
+									<p>
+										If you are a registered customer and want to check your order history, please <a href="{% url 'signin' %}" style="color: #ffffff;" target="_blank">sign in</a>.<br>
+										Otherwise <a href="{% url 'signup' %}" style="color: #ffffff;" target="_blank">sign up</a> to create a new account with us.
+									</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
 		</table>
-		<center>
-			<br>
-			<p>If you are a registered customer and want to check your order history,
-        please <a href="{% url 'signin' %}">sign in</a>.
-        <br>Otherwise <a href="{% url 'signup' %}">sign up</a>
-        to create a new account with us.</p>
-		</center>
 	</body>
 </html>

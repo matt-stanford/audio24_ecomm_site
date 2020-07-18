@@ -1,0 +1,47 @@
+{% load static %}
+{% load add_days %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>New Order #{{ transaction.id }} - audio24</title>
+	</head>
+	<body>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#3aafa9" style="font-family: 'Poppins', Arial, sans-serif;">
+			<tbody>
+				<tr>
+					<td>
+						<table align="center" border="0" cellpadding="0" cellspacing="0" width="640" style="border-collapse: collapse;">
+							<tr>
+								<td align="center" bgcolor="#17252a" style="padding: 10px 0 10px 0;">
+									<p style="font-size: 30px; font-weight: 600; color: #ffffff;">audio<span style="font-size: 24; font-weight: 700; color: #3aafa9;">24</span></p>
+								</td>
+							</tr>
+							<tr>
+								<td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px">
+									<table border="0" cellspacing="0" cellpadding="0" width="100%">
+										<tr>
+											<td style="line-height: 20px; font-size: 15px; padding-bottom: 20px;">
+												<p>
+													Hi Matt
+													<br><br>
+													You have a message from <strong>{{ name }}</strong>.
+                                                    <br><br>
+                                                    <strong>Email: </strong>{{ email }}<br>
+													<strong>Phone: </strong>{{ phone }}<br>
+													<strong>Message: </strong>{{ body }}
+												</p>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

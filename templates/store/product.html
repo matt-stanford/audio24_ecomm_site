@@ -157,15 +157,17 @@
                             <div class="product-item-submit">
                                 <button type="submit" class="btn btn-submit"><span class="fas fa-shopping-cart"></span> Add to cart</button>
                             </div>
-                            {% if wishlist %}
-                                <div>
-                                    <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn"><span class="fas fa-heart"></span></a>
-                                </div>
-                            {% else %}
-                                <div>
-                                    <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist" class=" btn wishlist-btn" id="add-to-wishlist"><span class="far fa-heart"></span></a>
-                                    <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn" id="go-to-wishlist"><span class="fas fa-heart"></span></a>
-                                </div>
+                            {% if request.user.is_authenticated %}
+                                {% if wishlist %}
+                                    <div>
+                                        <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn"><span class="fas fa-heart"></span></a>
+                                    </div>
+                                {% else %}
+                                    <div>
+                                        <a href="{% url 'add_to_wishlist' product.id %}" title="Add to wishlist" class=" btn wishlist-btn" id="add-to-wishlist"><span class="far fa-heart"></span></a>
+                                        <a href="{% url 'wishlist' %}" title="Already in your wishlist. Go to wishlist" class="btn wishlist-btn" id="go-to-wishlist"><span class="fas fa-heart"></span></a>
+                                    </div>
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="product-help-text">
@@ -173,7 +175,7 @@
                                 <li>
                                     <strong>Need help or product is sold out?
                                     <br>
-                                    <a href="tel:+">Call (555) 555-1234</a> or <a href="mailto:">Email us</a>
+                                    <a href="tel:+">Call (555) 555-1234</a> or <a href="mailto:audio24.headphones@gmail.com">Email us</a>
                                     </strong>
                                 </li>
                                 <li><strong>Free expedited shipping on orders over $100</strong></li>
@@ -203,13 +205,13 @@
                                                 <div class="price-match-form-wrapper">
                                                     <div>
                                                         <label for="email">Email</label>
-                                                        <input type="email" name="email" id="email" placeholder="Email">
+                                                        <input type="email" name="email" id="email">
                                                         <label for="phone">Phone</label>
-                                                        <input type="text" name="phone" id="phone" placeholder="Optional">
+                                                        <input type="text" name="phone" id="phone">
                                                         <label for="price">Price</label>
-                                                        <input type="text" name="price" id="price" placeholder="$">
+                                                        <input type="text" name="price" id="price">
                                                         <label for="url">Link to lower price</label>
-                                                        <input type="text" name="url" id="url" placeholder="URL">
+                                                        <input type="text" name="url" id="url">
                                                         <div class="price-match-form-submit">
                                                             <label class="checkbox-container">I agree to&nbsp;<a href="{% url 'price_match_privacy' %}">privacy policy</a>
                                                                 <input type="checkbox" id="price-match-checkbox">

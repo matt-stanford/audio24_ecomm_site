@@ -6,6 +6,7 @@ import stripe
 from django.conf import settings
 from django.contrib.auth.models import Group, User
 from .forms import SignUpForm
+from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -59,34 +60,48 @@ def product(request, category_slug, product_slug):
     reviews = Review.objects.filter(product=product)
     ratings = Review.objects.filter(product=product).aggregate(average=Avg('rating'))
 
-    try:
-        wishlist = Wishlist.objects.get(user=request.user, product=product)
+    if request.user.is_authenticated:
+        try:
+            wishlist = Wishlist.objects.get(user=request.user, product=product)
+            context = {
+                'product': product,
+                'three_monthly': three_monthly,
+                'six_monthly': six_monthly,
+                'six_total': six_total,
+                'six_interest': six_interest,
+                'twelve_monthly': twelve_monthly,
+                'twelve_total': twelve_total,
+                'twelve_interest': twelve_interest,
+                'reviews': reviews,
+                'ratings': ratings,
+                'wishlist': wishlist
+            }
+        except Wishlist.DoesNotExist:
+            context = {
+                'product': product,
+                'three_monthly': three_monthly,
+                'six_monthly': six_monthly,
+                'six_total': six_total,
+                'six_interest': six_interest,
+                'twelve_monthly': twelve_monthly,
+                'twelve_total': twelve_total,
+                'twelve_interest': twelve_interest,
+                'reviews': reviews,
+                'ratings': ratings,
+            }
+    else:
         context = {
-            'product': product,
-            'three_monthly': three_monthly,
-            'six_monthly': six_monthly,
-            'six_total': six_total,
-            'six_interest': six_interest,
-            'twelve_monthly': twelve_monthly,
-            'twelve_total': twelve_total,
-            'twelve_interest': twelve_interest,
-            'reviews': reviews,
-            'ratings': ratings,
-            'wishlist': wishlist
-        }
-    except Wishlist.DoesNotExist:
-        context = {
-            'product': product,
-            'three_monthly': three_monthly,
-            'six_monthly': six_monthly,
-            'six_total': six_total,
-            'six_interest': six_interest,
-            'twelve_monthly': twelve_monthly,
-            'twelve_total': twelve_total,
-            'twelve_interest': twelve_interest,
-            'reviews': reviews,
-            'ratings': ratings,
-        }
+                'product': product,
+                'three_monthly': three_monthly,
+                'six_monthly': six_monthly,
+                'six_total': six_total,
+                'six_interest': six_interest,
+                'twelve_monthly': twelve_monthly,
+                'twelve_total': twelve_total,
+                'twelve_interest': twelve_interest,
+                'reviews': reviews,
+                'ratings': ratings,
+            }
 
     return render(request, 'store/product.html', context)
 
@@ -349,3 +364,32 @@ def sendEmail(order_id):
         msg.send()
     except IOError as e:
         return e
+
+def contact(request):
+    mapbox_access_token = 'pk.eyJ1IjoibWF0dHN0YW5mb3JkIiwiYSI6ImNrY3JxNm95eDBiN3YycXA0YmQ3Y282aXQifQ.VvogpSkKjBFteIlhX95WBQ'
+
+    if request.method == 'POST':
+        try:
+            name = request.POST['name']
+            phone = request.POST['phone']
+            email = request.POST['email']
+            subject = request.POST['subject']
+            body = request.POST['body']
+            to = ['mjfstanford@gmail.com', 'audio24.headphones@gmail.com']
+
+            contact_information = {
+                'name': name,
+                'phone': phone,
+                'email': email,
+                'body': body
+            }
+
+            message = get_template('email/contact.html').render(contact_information)
+            msg = EmailMessage(subject, message, to=to, from_email=email)
+            msg.content_subtype = 'html'
+            msg.send()
+            messages.success(request, 'Thanks for contacting us. We\'ll be in touch soon.')
+        except IOError as e:
+            return e
+
+    return render(request, 'store/contact.html', {'mapbox_access_token': mapbox_access_token})

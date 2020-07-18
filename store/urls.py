@@ -22,4 +22,5 @@ urlpatterns = [
     path('wishlist/remove/<int:product_id>', views.remove_from_wishlist, name='remove_from_wishlist'),
     path('privacy/', views.price_match_privacy, name='price_match_privacy'),
     path('price-match-guarantee/', views.price_match_guarantee, name='price_match_guarantee'),
+    path('contact/', views.contact, name='contact'),
 ]

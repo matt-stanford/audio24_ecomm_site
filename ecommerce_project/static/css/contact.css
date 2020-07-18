@@ -1,0 +1,21 @@
+.contact-header {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.contact-detail {
+    margin-bottom: 20px;
+}
+
+.message-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 640px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--light);
+}

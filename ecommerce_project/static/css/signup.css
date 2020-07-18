@@ -1,13 +1,15 @@
 .signup-form-wrapper,
 .review-form-wrapper,
-.price-match-form-wrapper {
+.price-match-form-wrapper,
+.contact-form-wrapper {
     width: 100%;
     padding: 20px;
 }
 
 .signup-form-wrapper label,
 .review-form-wrapper label,
-.price-match-form-wrapper label {
+.price-match-form-wrapper label,
+.contact-form-wrapper label {
     font-size: 14px;
     font-weight: bold;
     padding: 6px 0;
@@ -19,7 +21,9 @@
 .review-form-wrapper input,
 .review-form-wrapper textarea,
 .price-match-form-wrapper input,
-.price-match-form-wrapper textarea {
+.price-match-form-wrapper textarea,
+.contact-form-wrapper input,
+.contact-form-wrapper textarea {
     height: 32px;
     width: 100%;
     padding: 4px 8px;
@@ -33,7 +37,9 @@
 .review-form-wrapper input:focus,
 .review-form-wrapper textarea:focus,
 .price-match-form-wrapper input:focus,
-.price-match-form-wrapper textarea:focus {
+.price-match-form-wrapper textarea:focus,
+.contact-form-wrapper input:focus,
+.contact-form-wrapper textarea:focus {
     outline: none;
     border-radius: 0;
     border: 2px solid var(--secondary-color);
@@ -58,4 +64,8 @@
 textarea {
     resize: none;
     height: auto !important;
+}
+
+.form-required {
+    color: var(--secondary-color);
 }

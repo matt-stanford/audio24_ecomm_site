@@ -101,10 +101,8 @@ function setRating() {
     stars.forEach((star, index) => {
         if (rating > index) {
             star.classList.replace('far', 'fas');
-            console.log('added rated on', index );
         } else {
-            star.classList.replace('fas', 'far')
-            console.log('removed rated on', index );
+            star.classList.replace('fas', 'far');
         }
     });
 }
