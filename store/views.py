@@ -10,6 +10,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
 
 def index(request, category_slug=None):
     category_page = None
@@ -220,6 +222,13 @@ def cart_detail(request, total=0, counter=0, cart_items=None):
                     order_item.delete()
 
                     print('Order has been created')
+
+                try:
+                    sendEmail(order_details.id)
+                    print('The order email has been sent!')
+                except IOError as e:
+                    return e
+                    
                 return redirect('thanks_page', order_details.id)
             except ObjectDoesNotExist:
                 pass
@@ -321,3 +330,22 @@ def price_match_privacy(request):
 
 def price_match_guarantee(request):
     return render(request, 'store/guarantee.html')
+
+def sendEmail(order_id):
+    transaction = Order.objects.get(id=order_id)
+    order_items = OrderItem.objects.filter(order=transaction)
+
+    try:
+        subject = f'Audio24 - New Order #{transaction.id}'
+        to = [f'{transaction.emailAddress}',]
+        from_email = 'audio24.headphones@gmail.com'
+        order_information = {
+            'transaction': transaction,
+            'order_items': order_items
+        }
+        message = get_template('email/email.html').render(order_information)
+        msg = EmailMessage(subject, message, to=to, from_email=from_email)
+        msg.content_subtype = 'html'
+        msg.send()
+    except IOError as e:
+        return e

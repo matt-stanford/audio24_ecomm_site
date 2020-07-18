@@ -142,4 +142,7 @@ class Wishlist(models.Model):
         db_table = 'Wishlist'
         ordering = ['-added']
 
+    def __str__(self):
+        return f'{self.product.name} | {self.user.username}'
+
     objects = models.Manager()

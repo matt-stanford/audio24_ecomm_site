@@ -123,3 +123,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_8lxfiC1PuLjCKOYD2gtXpYH2'
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
+
+# Email config
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'audio24.headphones@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('AUDIO24_EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
