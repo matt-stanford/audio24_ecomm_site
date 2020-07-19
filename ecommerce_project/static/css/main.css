@@ -292,6 +292,20 @@ button:disabled {
     margin: 0 10px 10px 0;
 }
 
+.product-info-block {
+    padding: 20px;
+}
+
+.product-info-block h4,
+.product-info-block h5,
+.product-info-block h6 {
+    margin: 10px 0;
+}
+
+.product-info-block p {
+    padding: 6px 0;
+}
+
 .btn {
     border-radius: 0;
     border: none;
