@@ -11,6 +11,7 @@
 }
 
 .message-block {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,4 +19,20 @@
     margin: 0 auto;
     padding: 20px;
     background: var(--light);
+}
+
+.message-close-btn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: var(--primary-color);
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.message-close-btn:focus,
+.message-close-btn:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
 }

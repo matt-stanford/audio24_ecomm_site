@@ -7,13 +7,16 @@
         <div class="row mt-5">
             <h1 class="section-header">Contact Us</h1>
         </div>
-        <div class="message-block">
-            {% if messages %}
+        
+        {% if messages %}
+            <div class="message-block">
                 {% for message in messages %}
                     {{ message }}
                 {% endfor %}
-            {% endif %}
-        </div>
+                <span class="message-close-btn">&times;</span>
+            </div>
+        {% endif %}
+
         <div class="contact-wrapper">
             <p class="contact-detail">Please do not hesitate to contact us via any of the methods shown below. We love to help with queries, we love to talk audio, and we love to build relationships with our customers - get in touch today.</p>
             <h1 class="contact-header">Opening Hours</h1>

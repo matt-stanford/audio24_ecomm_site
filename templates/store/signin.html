@@ -7,6 +7,14 @@
 {% block content %}
     <div class="container">
         <div class="row mt-5">
+            {% if messages %}
+                <div class="message-block">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                    <span class="message-close-btn">&times;</span>
+                </div>
+            {% endif %}
             <h1 class="section-header">
                 Login or Create a New Account
             </h1>

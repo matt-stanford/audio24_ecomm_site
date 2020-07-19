@@ -274,6 +274,8 @@ def signupView(request):
             signup_user = User.objects.get(username=username)
             customer_group = Group.objects.get(name='Customer')
             customer_group.user_set.add(signup_user)
+            messages.success(request, 'Your account has been created. Please now sign in to continue.')
+            return redirect('signin')
     else:
         form = SignUpForm()
     return render(request, 'store/signup.html', {'form': form})

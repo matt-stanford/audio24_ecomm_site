@@ -124,3 +124,13 @@ const rating = document.querySelector('.review-average').getAttribute('data-rati
 const starPercentage = `${Math.round(rating / 5 * 100) / 10 * 10}%`
 
 document.querySelector('.stars-inner').style.width = starPercentage;
+
+// message block
+
+const msgClose = document.querySelector('.message-close-btn');
+const msgBlock = document.querySelector('.message-block');
+
+msgClose.addEventListener('click', function() {
+    msgBlock.style.display = 'none';
+    console.log('clicked')
+});
