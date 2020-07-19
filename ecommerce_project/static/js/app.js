@@ -83,6 +83,17 @@ priceMatchSubmit.addEventListener('click', function() {
     priceMatchSubmitted.style.display = 'flex';
 })
 
+// wishlist button change
+
+let addToWishlist = document.querySelector('#addwishlist');
+let goToWishlist = document.querySelector('#go-to-wishlist');
+
+addToWishlist.addEventListener('click', function() {
+    addToWishlist.style.display = 'none';
+    goToWishlist.style.display = 'flex';
+    console.log('clicked')
+});
+
 
 // star rating
 
@@ -113,13 +124,3 @@ const rating = document.querySelector('.review-average').getAttribute('data-rati
 const starPercentage = `${Math.round(rating / 5 * 100) / 10 * 10}%`
 
 document.querySelector('.stars-inner').style.width = starPercentage;
-
-// wishlist button change
-
-let addToWishlist = document.querySelector('#add-to-wishlist');
-let goToWishlist = document.querySelector('#go-to-wishlist');
-
-addToWishlist.addEventListener('click', function() {
-    addToWishlist.style.display = 'none';
-    goToWishlist.style.display = 'flex';
-});
