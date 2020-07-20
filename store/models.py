@@ -33,7 +33,6 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    sku = models.CharField(max_length=50, null=True)
 
     class Meta:
         ordering = ('name',)
