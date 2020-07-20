@@ -29,7 +29,7 @@
 													<br><br>
 													Great news! Your order <strong>{{ transaction.id }}</strong> is being processed and will be with you soon.
 													<br><br>
-													Your estimated delivery date is <strong>{{ transaction.created | add_days:2 | date:"d M Y" }}</strong> and you can check your order’s status by clicking below.
+													Your estimated delivery date is <strong>{{ transaction.created | add_days:2 | date:"d M Y" }}</strong>. Sign in to check your order’s status by clicking below.
 												</p>
 												<table>
 													<tbody>
@@ -39,7 +39,7 @@
 																	<tbody>
 																	  <tr>
 																		<td valign="middle" align="center">
-																		  <a href="http://audio24.herokuapp.com{% url 'order_detail' transaction.id %}" style="font-size: 15px; line-height: 30px; color: #ffffff; font-weight: bold; text-decoration: none;" target="_blank" title="Link opens page in a new window"  >ORDER DETAILS</a>
+																		  <a href="http://audio24.herokuapp.com{% url 'signin' %}" style="font-size: 15px; line-height: 30px; color: #ffffff; font-weight: bold; text-decoration: none;" target="_blank" title="Link opens page in a new window"  >ORDER DETAILS</a>
 																		</td>
 																	  </tr>
 																	</tbody>
