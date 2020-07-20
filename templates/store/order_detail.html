@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% block title %}Order Details{% endblock %}
 
 {% block content %}
@@ -15,7 +17,7 @@
                     <td class="text-left" colspan="2">
                         <strong>Order: </strong>#{{ order.id }} <br>
                         <strong>Date: </strong>{{ order.created | date:"d M Y" }} <br>
-                        <strong>Order Total: </strong>${{ order.total }} <br>
+                        <strong>Order Total: </strong>${{ order.total | intcomma }} <br>
                         <strong>Order Status: </strong><i class="fas fa-check"></i> Complete
                     </td>
                     <td class="text-left" colspan="2">
@@ -50,23 +52,23 @@
                             </td>
                             <td>
                                 <div class="table-responsive-header">Unit Price</div>
-                                <div class="table-responsive-content">${{ item.price }}</div>
+                                <div class="table-responsive-content">${{ item.price | intcomma }}</div>
                             </td>
                             <td>
                                 <div class="table-responsive-header">Sub-Total</div>
-                                <div class="table-responsive-content">${{ item.sub_total }}</div>
+                                <div class="table-responsive-content">${{ item.sub_total | intcomma }}</div>
                             </td>
                         </tr>
                     {% endfor %}
                     <tr>
                         <td colspan="2"></td>
                         <td><strong>Total</strong></td>
-                        <td>${{ order.total }}</td>
+                        <td>${{ order.total | intcomma }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
                         <td><strong>Total Paid</strong></td>
-                        <td>${{ order.total }}</td>
+                        <td>${{ order.total | intcomma }}</td>
                     </tr>
                 </tbody>
             </table>

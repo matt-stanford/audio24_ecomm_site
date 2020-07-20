@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% block title %}Order History{% endblock %}
 
 {% block content %}
@@ -34,7 +36,7 @@
                             </td>
                             <td>
                                 <div class="table-responsive-header">Total Amount</div>
-                                <div class="table-responsive-content">${{ order.total }}</div>
+                                <div class="table-responsive-content">${{ order.total | intcomma }}</div>
                             </td>
                             <td>
                                 <div class="table-responsive-header">Status</div>
