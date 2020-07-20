@@ -28,9 +28,9 @@
                         </div>
                         <span class="number-reviews"></span>
                     {% endif%}
-                    <!-- <p class="product-sku">Product SKU:
-                        <span class="variant-sku"></span>
-                    </p> -->
+                    <p class="product-sku">Product SKU:
+                        <span class="variant-sku">{{ product.sku }}</span>
+                    </p>
                     <div class="product-quantity">
                         <p>
                             {% if product.stock <= 0 %}Out of stock
